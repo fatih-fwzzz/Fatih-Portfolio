@@ -384,7 +384,7 @@ export default function Portfolio() {
       github: "https://github.com/fatih-fwzzz/HUTRIVIA.git",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_hutrivia.png",
     },
     {
       title: "LOOCA",
@@ -394,17 +394,17 @@ export default function Portfolio() {
       github: "https://github.com/fatih-fwzzz/Looca.git",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_looca.png",
     },
     {
       title: "LOOCA-WatchOS",
       description:
-        "Looca is a SwiftUI-based indoor navigation app designed to help users find their way to food courts in large building complexes. The app provides step-by-step navigation using a combination of ARKit and CoreLocation, ensuring precise direction even in offline environments like basements or parking areas.",
+        "Looca for watchOS is a streamlined navigation app designed to guide users to their destination using a simple, intuitive arrow and real-time distance updates. Built with CoreLocation, the app calculates direction and proximity from your current location to a fixed target, making it perfect for short-range indoor navigation such as malls, campuses, or parking areas.",
       tech: ["Swift", "SwiftUI"],
       github: "https://github.com/fatih-fwzzz/LoocaWatchOS.git",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_looca_watch.png",
     },
     {
       title: "LeaFit",
@@ -414,7 +414,7 @@ export default function Portfolio() {
       github: "https://github.com/LeaFIt-iOS/LeaFitv2.git",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_leafit.png",
     },
     {
       title: "Kenali-Diri",
@@ -424,7 +424,7 @@ export default function Portfolio() {
       github: "https://github.com/Kenali-Diri",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_kenali_diri.png",
     },
     {
       title: "PahamiKulit",
@@ -434,7 +434,7 @@ export default function Portfolio() {
       github: "https://github.com/Basic-Dulu",
       demo: "#",
       image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "/portfolio_pahamikulit.png",
     },
   ];
 
@@ -444,7 +444,7 @@ export default function Portfolio() {
       company: "Apple Developer Academy",
       period: "2025 - Present",
       description:
-        "Currently developing innovative iOS applications using Swift and SwiftUI. Collaborating in a cross-functional team to design, prototype, and publish impactful apps on the App Store. Practicing human-centered design, Challenge-Based-Learning, and app-based problem solving.",
+        "Selected as one of the Apple Developer Academy participants from over 13,000 applicants (with an acceptance rate of less than 1.60%), I am currently engaged in an intensive program that focuses on app development, business, and innovation within the Apple ecosystem. As part of a diverse team, I collaborate to build impactful, user-centric applications using Swift, Xcode, and Apple’s Human Interface Guidelines.",
     },
     {
       title: "Software Engineer Intern",
