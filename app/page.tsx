@@ -23,6 +23,22 @@ const staggerContainer: Variants = {
   },
 };
 
+const typingContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const typingLetter: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 // --- DATA CONSTANTS ---
 
 const PERSONAL_INFO = {
@@ -299,13 +315,35 @@ export default function Portfolio() {
                   </div>
                 ))}
               </motion.div>
-              <motion.h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight" variants={fadeInUp}>
-                {PERSONAL_INFO.heroTitle}
+              <motion.h1
+                className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight max-w-lg"
+                variants={typingContainer}
+              >
+                {PERSONAL_INFO.heroTitle.split(" ").map((word, wordIndex) => (
+                  <span key={wordIndex} className="inline-block whitespace-nowrap mr-2 sm:mr-3">
+                    {Array.from(word).map((char, charIndex) => (
+                      <motion.span key={charIndex} variants={typingLetter}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
               </motion.h1>
-              <motion.p className="text-xl md:text-2xl text-gray-600 font-light mb-10 leading-relaxed max-w-2xl" variants={fadeInUp}>
-                {PERSONAL_INFO.heroSubtitle}
+              <motion.p
+                className="text-xl md:text-2xl text-gray-600 font-light mb-10 leading-relaxed max-w-2xl"
+                variants={typingContainer}
+              >
+                {PERSONAL_INFO.heroSubtitle.split(" ").map((word, wordIndex) => (
+                  <span key={wordIndex} className="inline-block whitespace-nowrap mr-1">
+                    {Array.from(word).map((char, charIndex) => (
+                      <motion.span key={charIndex} variants={typingLetter}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
               </motion.p>
-              <motion.div className="flex items-center space-x-6" variants={fadeInUp}>
+              <div className="flex items-center space-x-6">
                 <a
                   href="#work"
                   className="inline-flex items-center text-blue-600 hover:text-blue-700 text-lg font-medium transition-colors group"
@@ -320,7 +358,7 @@ export default function Portfolio() {
                   <i className="fa-brands fa-github mr-2"></i>
                   GitHub
                 </a>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
