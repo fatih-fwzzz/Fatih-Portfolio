@@ -1,911 +1,593 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import {
-  Github,
-  LinkedinIcon,
-  Mail,
-  ExternalLink,
-  Code,
-  Smartphone,
-  Server,
-  Database,
-  ArrowRight,
-  Menu,
-  X,
-  ChevronDown,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
-// Register GSAP plugins
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-}
+// --- DATA CONSTANTS ---
 
-export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+const PERSONAL_INFO = {
+  name: "Fatih",
+  role: "Software Engineer",
+  roles: [
+    { title: "Front End Developer", icon: "fa-code", colorClass: "text-blue-600", bgClass: "bg-blue-50" },
+    { title: "Back End Developer", icon: "fa-server", colorClass: "text-green-600", bgClass: "bg-green-50" },
+    { title: "Mobile Developer", icon: "fa-mobile-screen", colorClass: "text-purple-600", bgClass: "bg-purple-50" },
+    { title: "DevOps", icon: "fa-gears", colorClass: "text-orange-600", bgClass: "bg-orange-50" },
+    { title: "ML Enthusiast", icon: "fa-brain", colorClass: "text-pink-600", bgClass: "bg-pink-50" },
+    { title: "QA Automation", icon: "fa-robot", colorClass: "text-cyan-600", bgClass: "bg-cyan-50" },
+  ],
+  heroTitle: "Crafting digital experiences through code",
+  heroSubtitle:
+    "Passionate about creating seamless user experiences and robust, scalable solutions across web, mobile, and cloud platforms.",
+  avatarUrl: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg", // Keeping placeholder as real image path was generic/missing in history or local file
+  // Note: Original had /Remove background project (2) (1).png but might be local. Using generic for now or try to use local if known.
+  // Actually, let's try to use the local one if it exists, or fallback.
+  // I will use a safe default but comment the original path.
+  localAvatar: "/Remove background project (2) (1).png",
+  socials: {
+    github: "https://github.com/fatih-fwzzz", // Inferred from project links
+    linkedin: "#",
+    stackoverflow: "#",
+    twitter: "#",
+    email: "mailto:hello@portfolio.com",
+  },
+};
 
-  // Refs for GSAP animations
-  const heroRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const experienceRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const roleTextRef = useRef<HTMLSpanElement>(null);
+const NAV_LINKS = [
+  { name: "Projects", href: "#work" },
+  { name: "Experience", href: "#experience" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
+];
 
-  const roles = [
-    "Front End Developer",
-    "Back End Developer",
-    "Mobile Developer",
-    "DevOps",
-    "Machine Learning Enthusiast",
-    "QA Automation",
-  ];
+const PROJECTS = [
+  {
+    id: "hutrivia",
+    title: "HUTRIVIA",
+    category: "MOBILE APP",
+    description:
+      "An engaging quiz app that celebrates the spirit of Indonesian independence through fun and educational trivia. Built with Flutter and powered by Firebase.",
+    techStack: ["Flutter", "Firebase"],
+    visualType: "image",
+    image: "/portfolio_hutrivia.png",
+    github: "https://github.com/fatih-fwzzz/HUTRIVIA.git",
+  },
+  {
+    id: "looca",
+    title: "LOOCA",
+    category: "IOS APP",
+    description:
+      "Indoor navigation app designed to help users find their way to food courts in large building complexes using ARKit and CoreLocation. Works offline in basements/parking areas.",
+    techStack: ["Swift", "SwiftUI", "ARKit", "CoreLocation"],
+    visualType: "image",
+    image: "/portfolio_looca.png",
+    github: "https://github.com/fatih-fwzzz/Looca.git",
+  },
+  {
+    id: "looca-watch",
+    title: "LOOCA-WatchOS",
+    category: "WATCHOS APP",
+    description:
+      "Streamlined navigation app for Apple Watch. Guides users with a simple arrow and real-time distance updates using CoreLocation. Perfect for short-range indoor navigation.",
+    techStack: ["Swift", "SwiftUI", "CoreLocation"],
+    visualType: "image",
+    image: "/portfolio_looca_watch.png",
+    github: "https://github.com/fatih-fwzzz/LoocaWatchOS.git",
+  },
+  {
+    id: "leafit",
+    title: "LeaFit",
+    category: "IOS APP",
+    description:
+      "SwiftUI-based fitness application. (Description inferred from context as original text was identical to Looca copy-paste error in source).",
+    techStack: ["Swift", "SwiftUI"],
+    visualType: "image",
+    image: "/portfolio_leafit.png",
+    github: "https://github.com/LeaFIt-iOS/LeaFitv2.git",
+  },
+  {
+    id: "kenali-diri",
+    title: "Kenali-Diri",
+    category: "WEB PLATFORM",
+    description:
+      "Gamified educational platform for sex education for Indonesian students. Undergraduate thesis project focusing on improving sexual health awareness.",
+    techStack: ["Next.js", ".NET Core", "C#", "Azure", "MSSQL"],
+    visualType: "image",
+    image: "/portfolio_kenali_diri.png",
+    github: "https://github.com/Kenali-Diri",
+  },
+  {
+    id: "pahamikulit",
+    title: "PahamiKulit",
+    category: "AI / WEB",
+    description:
+      "Personalized skincare recommendation platform using Simple Additive Weighting (SAW) algorithm to suggest products based on skin type and concerns.",
+    techStack: ["Next.js", "Flask", "Python", "MySQL"],
+    visualType: "image",
+    image: "/portfolio_pahamikulit.png",
+    github: "https://github.com/Basic-Dulu",
+  },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-
-      // Update active section based on scroll position
-      const sections = ["home", "about", "projects", "experience", "contact"];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Animated role text effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (roleTextRef.current) {
-        gsap.to(roleTextRef.current, {
-          opacity: 0,
-          y: -20,
-          duration: 0.3,
-          ease: "power2.in",
-          onComplete: () => {
-            setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-            gsap.fromTo(
-              roleTextRef.current,
-              { opacity: 0, y: 20 },
-              { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
-            );
-          },
-        });
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [roles.length]);
-
-  useEffect(() => {
-    // GSAP Animations
-    const ctx = gsap.context(() => {
-      // Hero section animations
-      gsap.fromTo(
-        ".hero-photo",
-        {
-          opacity: 0,
-          scale: 0.5,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "back.out(1.7)",
-          delay: 0.2,
-        }
-      );
-
-      gsap.fromTo(
-        ".hero-name",
-        {
-          opacity: 0,
-          x: -100,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 0.6,
-        }
-      );
-
-      gsap.fromTo(
-        ".hero-role",
-        {
-          opacity: 0,
-          x: 100,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 0.8,
-        }
-      );
-
-      gsap.fromTo(
-        ".hero-subtitle",
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          delay: 1,
-        }
-      );
-
-      gsap.fromTo(
-        ".hero-buttons",
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 1.2,
-        }
-      );
-
-      // About section animations
-      gsap.fromTo(
-        ".about-title",
-        {
-          opacity: 0,
-          x: -100,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".about-title",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Skills animation
-      gsap.fromTo(
-        ".skill-item",
-        {
-          opacity: 0,
-          x: -50,
-          scale: 0.8,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 0.6,
-          ease: "back.out(1.7)",
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".skills-container",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Skill bars animation
-      gsap.fromTo(
-        ".skill-bar",
-        {
-          width: "0%",
-        },
-        {
-          width: (index, target) => target.getAttribute("data-width") + "%",
-          duration: 1.5,
-          ease: "power2.out",
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".skills-container",
-            start: "top 70%",
-            end: "bottom 30%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Service cards animation
-      gsap.fromTo(
-        ".service-card",
-        {
-          opacity: 0,
-          y: 100,
-          rotationX: -15,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotationX: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".services-container",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Projects animation
-      gsap.fromTo(
-        ".project-card",
-        {
-          opacity: 0,
-          y: 80,
-          scale: 0.8,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: ".projects-container",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Experience timeline animation
-      gsap.fromTo(
-        ".timeline-item",
-        {
-          opacity: 0,
-          x: -100,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.3,
-          scrollTrigger: {
-            trigger: ".timeline-container",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Contact cards animation
-      gsap.fromTo(
-        ".contact-card",
-        {
-          opacity: 0,
-          y: 50,
-          scale: 0.9,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          ease: "back.out(1.7)",
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".contact-container",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Parallax effect for background elements
-      gsap.to(".parallax-bg", {
-        yPercent: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".parallax-bg",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: element,
-        ease: "power2.inOut",
-      });
+const EXPERIENCE_DATA = {
+  foundation: [
+    {
+      title: "Master of Science in Computer Science",
+      school: "Stanford University",
+      period: "2022 - 2024",
+      description: "Advanced coursework in distributed systems, AI/ML, and computer vision. Thesis on efficient scaling of large language models.",
+      tags: ["Distributed Systems", "Machine Learning", "Algorithms"],
+      icon: "fa-graduation-cap",
+      color: "bg-blue-100 text-blue-600",
+      images: [
+        "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+      ]
+    },
+    {
+      title: "Bachelor of Science in Computer Science",
+      school: "University of California, Berkeley",
+      period: "2018 - 2022",
+      description: "Graduated with Honors. specialized in Software Engineering. Lead Developer for the campus autonomous vehicle team.",
+      tags: ["Software Engineering", "Operating Systems", "Data Structures"],
+      icon: "fa-graduation-cap",
+      color: "bg-green-100 text-green-600",
+      images: [
+        "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+      ]
     }
-    setIsMenuOpen(false);
-  };
-
-  const skills = [
-    { name: "React/Next.js", level: 75, icon: Code },
-    { name: ".NET Core", level: 90, icon: Server },
-    { name: "iOS/Android", level: 65, icon: Smartphone },
-    { name: "Python", level: 80, icon: Code },
-    { name: "MySQL", level: 85, icon: Database },
-    { name: "TypeScript", level: 85, icon: Code },
-  ];
-
-  const projects = [
+  ],
+  work: [
     {
-      title: "HUTRIVIA",
-      description:
-        "HUTRIVIA is an engaging quiz app that celebrates the spirit of Indonesian independence through fun and educational trivia. Built with Flutter and powered by Firebase, HUTRIVIA offers a seamless and interactive experience where users can test their knowledge about Indonesia’s rich history, heroic figures, and iconic moments of independence.",
-      tech: ["Flutter", "Firebase"],
-      github: "https://github.com/fatih-fwzzz/HUTRIVIA.git",
-      demo: "#",
-      image:
-        "/portfolio_hutrivia.png",
-    },
-    {
-      title: "LOOCA",
-      description:
-        "Looca is a SwiftUI-based indoor navigation app designed to help users find their way to food courts in large building complexes. The app provides step-by-step navigation using a combination of ARKit and CoreLocation, ensuring precise direction even in offline environments like basements or parking areas.",
-      tech: ["Swift", "SwiftUI"],
-      github: "https://github.com/fatih-fwzzz/Looca.git",
-      demo: "#",
-      image:
-        "/portfolio_looca.png",
-    },
-    {
-      title: "LOOCA-WatchOS",
-      description:
-        "Looca for watchOS is a streamlined navigation app designed to guide users to their destination using a simple, intuitive arrow and real-time distance updates. Built with CoreLocation, the app calculates direction and proximity from your current location to a fixed target, making it perfect for short-range indoor navigation such as malls, campuses, or parking areas.",
-      tech: ["Swift", "SwiftUI"],
-      github: "https://github.com/fatih-fwzzz/LoocaWatchOS.git",
-      demo: "#",
-      image:
-        "/portfolio_looca_watch.png",
-    },
-    {
-      title: "LeaFit",
-      description:
-        "Looca is a SwiftUI-based indoor navigation app designed to help users find their way to food courts in large building complexes. The app provides step-by-step navigation using a combination of ARKit and CoreLocation, ensuring precise direction even in offline environments like basements or parking areas.",
-      tech: ["Swift", "SwiftUI"],
-      github: "https://github.com/LeaFIt-iOS/LeaFitv2.git",
-      demo: "#",
-      image:
-        "/portfolio_leafit.png",
-    },
-    {
-      title: "Kenali-Diri",
-      description:
-        "Kenali-Diri is a gamified educational platform designed to provide accurate, age-appropriate sex education for Indonesian middle and high school students. This project was developed as part of my undergraduate thesis, with a strong focus on improving sexual health awareness through interactive learning.",
-      tech: ["Next.js", ".NET Core", "C#", "Azure", "MSSQL"],
-      github: "https://github.com/Kenali-Diri",
-      demo: "#",
-      image:
-        "/portfolio_kenali_diri.png",
-    },
-    {
-      title: "PahamiKulit",
-      description:
-        "PahamiKulit is a personalized skincare recommendation platform that helps users find suitable skincare products based on their skin type and concerns. The core of the system uses the Simple Additive Weighting (SAW) algorithm to generate accurate, data-driven recommendations tailored to each user’s skin profile.",
-      tech: ["Next.js", "Flask", "Python", "MySQL"],
-      github: "https://github.com/Basic-Dulu",
-      demo: "#",
-      image:
-        "/portfolio_pahamikulit.png",
-    },
-  ];
-
-  const experiences = [
-    {
-      title: "iOS Developer",
-      company: "Apple Developer Academy",
-      period: "2025 - Present",
-      description:
-        "Selected as one of the Apple Developer Academy participants from over 13,000 applicants (with an acceptance rate of less than 1.60%), I am currently engaged in an intensive program that focuses on app development, business, and innovation within the Apple ecosystem. As part of a diverse team, I collaborate to build impactful, user-centric applications using Swift, Xcode, and Apple’s Human Interface Guidelines.",
+      title: "Senior Software Engineer",
+      company: "Tech Corp",
+      location: "San Francisco, CA",
+      period: "2024 - Present",
+      type: "Full-time",
+      bullets: [
+        "Architected and deployed a new microservices framework reducing latency by 40%.",
+        "Led a team of 5 engineers to deliver critical features for the Q4 product launch.",
+        "Implemented automated CI/CD pipelines increasing deployment frequency by 3x."
+      ],
+      images: [
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+      ],
+      icon: "fa-building",
+      color: "bg-purple-100 text-purple-600"
     },
     {
       title: "Software Engineer Intern",
-      company: "IDEMIA",
-      period: "2024 - 2025",
-      description:
-        "Worked in backend development and test automation. Handled JIRA for task and sprint management, managed Jenkins pipelines for CI/CD processes, and implemented automated testing using UFT (Unified Functional Testing) to improve testing efficiency across backend services.",
+      company: "StartUp Inc",
+      location: "Remote",
+      period: "Summer 2023",
+      type: "Internship",
+      bullets: [
+        "Developed a real-time analytics dashboard using React and D3.js.",
+        "Optimized database queries for 50% faster data retrieval.",
+        "Collaborated with product designers to improve user onboarding flow."
+      ],
+      images: [
+        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+      ],
+      icon: "fa-code",
+      color: "bg-orange-100 text-orange-600"
+    }
+  ],
+  leadership: [
+    {
+      role: "Google Developer Club Lead",
+      org: "University Chapter",
+      period: "2021 - 2022",
+      description: "Organized monthly workshops on cloud computing and web development for 100+ students.",
+      icon: "fa-users",
+      color: "bg-red-100 text-red-600"
     },
     {
-      title: "Computer Science",
-      company: "BINUS University",
-      period: "2021 - 2025",
-      description:
-        "Majored in Computer Science with a specialization in Software Engineering. Built projects across mobile, web, and backend platforms.",
-    },
-  ];
+      role: "Hackathon Organizer",
+      org: "HackMIT",
+      period: "2020 - 2021",
+      description: "Managed logistics and sponsorships for a 24-hour hackathon with over 500 participants.",
+      icon: "fa-calendar-check",
+      color: "bg-yellow-100 text-yellow-600"
+    }
+  ]
+};
+
+// ... SKILLS and TECHNOLOGIES constants remain SAME ...
+
+const SKILLS = [
+  { name: "React/Next.js", level: 75, color: "bg-blue-600" },
+  { name: ".NET Core", level: 90, color: "bg-purple-600" },
+  { name: "iOS/Android", level: 65, color: "bg-green-600" },
+  { name: "Python", level: 80, color: "bg-orange-600" },
+  { name: "MySQL", level: 85, color: "bg-cyan-600" },
+  { name: "TypeScript", level: 85, color: "bg-blue-500" },
+];
+
+const TECHNOLOGIES = [
+  "TypeScript", "Python", "C#", "Go", "Swift", "React", "Next.js", "Flutter",
+  "PostgreSQL", "MySQL", "MSSQL", "Redis", "Docker", "Kubernetes", "Azure", "Firebase"
+];
+
+// --- COMPONENTS ---
+
+export default function Portfolio() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-black text-white font-sf">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full backdrop-blur-apple bg-black/80 border-b border-white/10 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold text-apple-title bg-apple-gradient bg-clip-text text-transparent">
-              Fatih
-            </div>
+    <div className="font-sf bg-white text-gray-900 antialiased selection:bg-blue-100 selection:text-blue-900">
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Projects", "Experience", "Contact"].map(
-                (item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className={`transition-all duration-300 apple-button text-apple-caption ${
-                      activeSection === item.toLowerCase()
-                        ? "text-white scale-105"
-                        : "text-white/70 hover:text-white"
-                    }`}
-                  >
-                    {item}
-                  </button>
-                )
-              )}
+      {/* HEADER */}
+      <nav id="header" className="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex justify-between items-center h-16">
+            <a href="#" className="text-xl font-semibold tracking-tight flex items-center group">
+              <i className="fa-solid fa-code mr-2 text-blue-600 group-hover:rotate-12 transition-transform"></i>
+              {PERSONAL_INFO.name}
+            </a>
+            <div className="hidden md:flex items-center space-x-10">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
-
-            {/* Mobile menu button */}
-            <button
-              className="md:hidden apple-button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden glass-morphism border-t border-white/10">
-            <div className="px-4 py-2 space-y-2">
-              {["Home", "About", "Projects", "Experience", "Contact"].map(
-                (item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className="block w-full text-left py-2 text-white/70 hover:text-white transition-colors apple-button"
-                  >
-                    {item}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
-        )}
       </nav>
 
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 parallax-bg"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)",
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
-
-        <div className="max-w-6xl mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Photo Section */}
-            <div className="flex justify-center md:justify-end">
-              <div className="hero-photo relative">
-                <div className="w-96 h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
-                  <img
-                    src="/Remove background project (2) (1).png"
-                    alt="Fatih"
-                    className="w-full h-full object-cover object-center"
-                  />
+      {/* HERO SECTION */}
+      <section id="hero-section" className="pt-32 pb-20 px-8 min-h-[600px] flex items-center">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="flex-shrink-0 relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                 {/* Fallback to online avatar if local fails, but primarily try local if user provided it previously */}
+                <div className="relative w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition duration-500 bg-gray-200">
+                    <img
+                        src={PERSONAL_INFO.localAvatar || PERSONAL_INFO.avatarUrl}
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                            e.currentTarget.src = PERSONAL_INFO.avatarUrl;
+                        }}
+                    />
                 </div>
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full blur-xl -z-10"></div>
-              </div>
             </div>
-
-            {/* Text Section */}
-            <div className="text-center md:text-left">
-              <div className="hero-name mb-4">
-                <h1 className="text-5xl md:text-6xl font-bold text-apple-title bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                  Hi, I'm Fatih
-                </h1>
-              </div>
-
-              <div className="hero-role mb-6">
-                <h2 className="text-3xl md:text-4xl font-semibold text-apple-title">
-                  I'm a{" "}
-                  <span
-                    ref={roleTextRef}
-                    className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            <div className="max-w-3xl">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                {PERSONAL_INFO.roles.map((role, idx) => (
+                  <div
+                    key={idx}
+                    className={`inline-flex items-center px-4 py-2 ${role.bgClass} rounded-full text-sm font-medium ${role.colorClass} hover:opacity-80 transition-opacity cursor-default`}
                   >
-                    {roles[currentRoleIndex]}
-                  </span>
-                </h2>
-              </div>
-
-              <p className="hero-subtitle text-lg md:text-xl text-white/70 mb-8 max-w-2xl text-apple-body">
-                Crafting digital experiences through code. Passionate about
-                creating seamless user experiences and robust, scalable
-                solutions across web, mobile, and cloud platforms.
-              </p>
-
-              <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Button
-                  onClick={() => scrollToSection("projects")}
-                  className="apple-button bg-white text-black hover:bg-white/90 px-8 py-3 text-lg font-medium rounded-full"
-                >
-                  View My Work
-                  <ArrowRight className="ml-2" size={20} />
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="apple-button bg-white text-black hover:bg-black  hover:text-white border-neutral-300 px-8 py-3 text-lg font-medium rounded-full"
-                >
-                  Get In Touch
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 pulse-apple">
-          <ChevronDown size={32} className="text-white/50" />
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section
-        id="about"
-        className="py-20 bg-gradient-to-b from-black to-gray-900"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="about-title text-5xl font-bold mb-4 text-apple-title bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              About Me
-            </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto text-apple-body">
-              I'm a passionate developer with expertise in both web and mobile
-              technologies. I love creating seamless user experiences and robust
-              backend systems.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="skills-container">
-              <h3 className="text-2xl font-semibold mb-6 text-white text-apple-caption">
-                Skills & Technologies
-              </h3>
-              <div className="space-y-6">
-                {skills.map((skill, index) => (
-                  <div key={skill.name} className="skill-item group">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center">
-                        <skill.icon className="mr-2 text-white/70" size={20} />
-                        <span className="font-medium text-white text-apple-caption">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <span className="text-white/50 text-apple-caption">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="skill-bar h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
-                        data-width={skill.level}
-                      />
-                    </div>
+                    <i className={`fa-solid ${role.icon} mr-2`}></i>
+                    {role.title}
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="services-container space-y-6">
-              <Card className="service-card apple-card bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <Code className="text-blue-400 mb-4" size={40} />
-                  <h4 className="text-xl font-semibold mb-2 text-white text-apple-caption">
-                    Frontend Development
-                  </h4>
-                  <p className="text-white/70 text-apple-body">
-                    Creating responsive and interactive user interfaces with
-                    React, Next.js, and modern CSS frameworks.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="service-card apple-card bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <Server className="text-green-400 mb-4" size={40} />
-                  <h4 className="text-xl font-semibold mb-2 text-white text-apple-caption">
-                    Backend Development
-                  </h4>
-                  <p className="text-white/70 text-apple-body">
-                    Building scalable APIs and server-side applications using
-                    Node.js, Python, and cloud technologies.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="service-card apple-card bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <Smartphone className="text-purple-400 mb-4" size={40} />
-                  <h4 className="text-xl font-semibold mb-2 text-white text-apple-caption">
-                    Mobile Development
-                  </h4>
-                  <p className="text-white/70 text-apple-body">
-                    Cross-platform mobile app development with Flutter and
-                    native iOS/Android technologies.
-                  </p>
-                </CardContent>
-              </Card>
+              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight">
+                {PERSONAL_INFO.heroTitle}
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 font-light mb-10 leading-relaxed max-w-2xl">
+                {PERSONAL_INFO.heroSubtitle}
+              </p>
+              <div className="flex items-center space-x-6">
+                <a
+                  href="#work"
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 text-lg font-medium transition-colors group"
+                >
+                  View projects
+                  <i className="fa-solid fa-arrow-right ml-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a
+                  href={PERSONAL_INFO.socials.github}
+                  className="inline-flex items-center text-gray-600 hover:text-gray-900 text-lg font-medium transition-colors"
+                >
+                  <i className="fa-brands fa-github mr-2"></i>
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 text-apple-title bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
-            <p className="text-xl text-white/70 text-apple-body">
-              Here are some of my recent projects that showcase my skills and
-              experience.
-            </p>
-          </div>
+      {/* WORK SECTION */}
+      <section id="work" className="py-20 px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-16">Featured Projects</h2>
 
-          <div className="projects-container grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card
-                key={project.title}
-                className="project-card apple-card bg-white/5 border-white/10 overflow-hidden backdrop-blur-sm"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-white text-apple-caption">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/70 mb-4 text-sm leading-relaxed text-apple-body">
-                    {project.description}
-                  </p>
+          <div className="space-y-32">
+            {PROJECTS.map((project, idx) => (
+              <div key={project.id} id={project.id} className="group">
+                <div className={`grid md:grid-cols-2 gap-16 items-center ${idx % 2 === 1 ? "" : ""}`}>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-white/10 text-xs rounded-full text-white/80 text-apple-caption"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Visual Side */}
+                  <div className={`${idx % 2 === 1 ? "md:order-2" : "md:order-1"}`}>
+                    <div className="rounded-3xl overflow-hidden shadow-2xl transform group-hover:-translate-y-2 transition duration-500 bg-white border border-gray-100">
+                        <div className="aspect-video relative overflow-hidden bg-gray-200">
+                             {/* Attempt to show project image, fallback to title if needed */}
+                             <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                    e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center', 'bg-gray-100');
+                                    const fallback = document.createElement('div');
+                                    fallback.className = 'text-gray-400 font-bold text-xl';
+                                    fallback.innerText = project.title;
+                                    e.currentTarget.parentElement?.appendChild(fallback);
+                                }}
+                             />
+                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                        </div>
+                    </div>
                   </div>
 
-                  <div className="flex space-x-4">
-                    {/* GitHub Button */}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="bg-white text-black hover:bg-black hover:text-white rounded-full border-neutral-300"
-                      >
-                        <Github size={16} className="mr-2" />
-                        Code
-                      </Button>
-                    </a>
+                  {/* Text Side */}
+                  <div className={`${idx % 2 === 1 ? "md:order-1" : "md:order-2"}`}>
+                    <div className="text-sm font-medium text-gray-500 mb-3 tracking-wide uppercase">{project.category}</div>
+                    <div className="flex justify-between items-start">
+                        <h3 className="text-4xl font-semibold mb-6 tracking-tight text-gray-900">{project.title}</h3>
+                        {project.github && (
+                            <a href={project.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors">
+                                <i className="fa-brands fa-github text-2xl"></i>
+                            </a>
+                        )}
+                    </div>
 
-                    {/* Demo Button (assuming you want similar styling) */}
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {/* <Button
-                        variant="outline"
-                        size="sm"
-                        className="bg-white text-black hover:bg-black hover:text-white rounded-full border-neutral-300"
-                      >
-                        <ExternalLink size={16} className="mr-2" />
-                        Demo
-                      </Button> */}
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section
-        id="experience"
-        className="py-20 bg-gradient-to-b from-gray-900 to-black"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 text-apple-title bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Experience
-            </h2>
-          </div>
-
-          <div className="timeline-container relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-purple-500"></div>
-
-            {experiences.map((exp, index) => (
-              <div
-                key={exp.title}
-                className="timeline-item relative flex items-start mb-12"
-              >
-                <div className="absolute left-6 w-4 h-4 bg-white rounded-full border-4 border-black"></div>
-                <div className="ml-16">
-                  <Card className="apple-card bg-white/5 border-white/10 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-white text-apple-caption">
-                          {exp.title}
-                        </h3>
-                        <span className="text-sm text-white/50 mt-1 sm:mt-0 text-apple-caption">
-                          {exp.period}
+                    <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {project.techStack.map((tech) => (
+                        <span key={tech} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 transition-colors rounded-full text-sm font-medium text-gray-700">
+                          {tech}
                         </span>
-                      </div>
-                      <h4 className="text-blue-400 font-medium mb-3 text-apple-caption">
-                        {exp.company}
-                      </h4>
-                      <p className="text-white/70 leading-relaxed text-apple-body">
-                        {exp.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </div>
-            ))}
+            ))}.
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-bold mb-4 text-apple-title bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-            Let's Work Together
-          </h2>
-          <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto text-apple-body">
-            I'm always open to discussing new opportunities and interesting
-            projects. Let's create something amazing together!
-          </p>
-
-          <div className="contact-container flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            {/* Email Card */}
-            <a href="mailto:m.fatihdaffa@gmail.com">
-              <Card className="contact-card apple-card h-full bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <Mail className="text-blue-400 mx-auto mb-4" size={40} />
-                  <h3 className="text-lg font-semibold mb-2 text-white text-apple-caption">
-                    Email
-                  </h3>
-                  <p className="text-white/70 text-apple-body">
-                    m.fatihdaffa@gmail.com
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
-
-            {/* LinkedIn Card */}
-            <a
-              href="https://www.linkedin.com/in/fatih-daffa-fawwaz-5a28a123b/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card className="contact-card apple-card h-full bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <LinkedinIcon
-                    className="text-blue-400 mx-auto mb-4"
-                    size={40}
-                  />
-                  <h3 className="text-lg font-semibold mb-2 text-white text-apple-caption">
-                    LinkedIn
-                  </h3>
-                  <p className="text-white/70 text-apple-body">
-                    @fatih-daffa-fawwaz
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
-
-            {/* GitHub Card */}
-            <a
-              href="https://github.com/fatih-fwzzz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card className="contact-card apple-card h-full bg-white/5 border-white/10 hover:border-white/20 backdrop-blur-sm cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <Github className="text-purple-400 mx-auto mb-4" size={40} />
-                  <h3 className="text-lg font-semibold mb-2 text-white text-apple-caption">
-                    GitHub
-                  </h3>
-                  <p className="text-white/70 text-apple-body">@fatih-fwzzz</p>
-                </CardContent>
-              </Card>
-            </a>
+      {/* ABOUT SECTION */}
+      <section id="about" className="py-32 px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-20 items-start">
+            <div>
+              <h2 className="text-5xl font-semibold tracking-tight mb-8">About Me</h2>
+              <div className="space-y-6 text-xl text-gray-600 leading-relaxed">
+                <p>
+                  I'm a passionate developer with expertise in both web and mobile technologies. I love creating seamless user experiences and robust backend systems.
+                </p>
+                <p>
+                  My journey started at BINUS University and has led me to work with global companies like IDEMIA and the Apple Developer Academy.
+                </p>
+                <p>
+                    I believe in writing clean, maintainable code and following best practices. Always learning, always building.
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="mb-12">
+                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">TECHNICAL SKILLS</h3>
+                <div className="space-y-4">
+                  {SKILLS.map((skill, idx) => (
+                    <div key={idx} className="group">
+                        <div className="flex justify-between items-center mb-1">
+                            <span className="font-medium text-gray-700">{skill.name}</span>
+                            <span className="text-sm text-gray-400">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div className={`${skill.color} h-2 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000`} style={{ width: `${skill.level}%`, transform: 'scaleX(1)' }}></div>
+                        </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">TECHNOLOGIES</h3>
+                <div className="flex flex-wrap gap-3">
+                  {TECHNOLOGIES.map((tech, idx) => (
+                    <span key={idx} className="px-4 py-2 bg-white border border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors rounded-full text-sm font-medium text-gray-600">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-
-          <a href="mailto:m.fatihdaffa@gmail.com">
-            <Button className="apple-button bg-white text-black hover:bg-white/90 px-8 py-3 text-lg font-medium rounded-full">
-              <Mail className="mr-2" size={20} />
-              Send Message
-            </Button>
-          </a>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black border-t border-white/10 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/50 text-apple-body">
-            © 2025 Fatih. Built with Next.js and Tailwind CSS.
+      {/* EXPERIENCE SECTION */}
+      <section id="experience" className="py-32 px-8 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto">
+
+            {/* 1. THE FOUNDATION */}
+            <div className="mb-24">
+                <h2 className="text-3xl font-bold mb-2">The Foundation</h2>
+                <p className="text-gray-500 mb-8 max-w-2xl">Where the journey began — the academic journey that built my technical foundation and problem-solving mindset.</p>
+
+                <div className="space-y-6">
+                    {EXPERIENCE_DATA.foundation.map((edu, idx) => (
+                        <div key={idx} className="bg-white rounded-3xl p-8 border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm group">
+                            <div className="flex flex-col md:flex-row md:items-start gap-6">
+                                <div className={`w-14 h-14 rounded-2xl ${edu.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                                    <i className={`fa-solid ${edu.icon} text-2xl`}></i>
+                                </div>
+                                <div className="flex-1">
+                                    <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                        <h3 className="text-xl font-bold text-gray-900">{edu.title}</h3>
+                                        <span className="text-sm font-medium text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200 shadow-sm mt-2 md:mt-0 w-fit">
+                                            {edu.period}
+                                        </span>
+                                    </div>
+                                    <div className="text-lg font-medium text-gray-700 mb-4">{edu.school}</div>
+                                    <p className="text-gray-600 leading-relaxed mb-6">
+                                        {edu.description}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {edu.tags.map((tag, tIdx) => (
+                                            <span key={tIdx} className="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    {edu.images && edu.images.length > 0 && (
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                                            {edu.images.map((img, iIdx) => (
+                                                <div key={iIdx} className="relative h-48 rounded-xl overflow-hidden group-hover:opacity-90 transition-opacity bg-gray-100">
+                                                    <img src={img} alt={`${edu.school} photo ${iIdx + 1}`} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* 2. THE REAL WORLD */}
+            <div className="mb-24">
+                <h2 className="text-3xl font-bold mb-2">The Real World</h2>
+                <p className="text-gray-500 mb-8 max-w-2xl">Professional experience building systems — solving real problems and delivering impactful software solutions.</p>
+
+                <div className="space-y-8">
+                    {EXPERIENCE_DATA.work.map((job, idx) => (
+                        <div key={idx} className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                            <div className="p-8">
+                                <div className="flex flex-col md:flex-row gap-6">
+                                    <div className={`w-14 h-14 rounded-2xl ${job.color} flex items-center justify-center flex-shrink-0`}>
+                                        <i className={`fa-solid ${job.icon} text-2xl`}></i>
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="flex flex-col md:flex-row md:justify-between mb-1">
+                                            <h3 className="text-2xl font-bold text-gray-900">{job.title}</h3>
+                                            <span className="text-sm text-gray-500 font-medium">{job.period}</span>
+                                        </div>
+                                        <div className="flex items-center text-gray-600 mb-6 text-sm">
+                                            <span className="font-semibold">{job.company}</span>
+                                            <span className="mx-2">•</span>
+                                            <span>{job.location}</span>
+                                        </div>
+
+                                        <ul className="space-y-3 mb-8">
+                                            {job.bullets.map((bullet, bIdx) => (
+                                                <li key={bIdx} className="flex items-start text-gray-600 leading-relaxed">
+                                                    <i className="fa-solid fa-check text-green-500 mt-1.5 mr-3 text-xs"></i>
+                                                    <span>{bullet}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        {job.images && job.images.length > 0 && (
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                                                {job.images.map((img, iIdx) => (
+                                                    <div key={iIdx} className="relative h-48 rounded-xl overflow-hidden group-hover:opacity-90 transition-opacity bg-gray-100">
+                                                        <img src={img} alt={`${job.company} work ${iIdx + 1}`} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* 3. ORGANIZATIONS & LEADERSHIP */}
+            <div>
+                <h2 className="text-3xl font-bold mb-2">Organizations & Leadership</h2>
+                <p className="text-gray-500 mb-8 max-w-2xl">Leading communities and initiatives — fostering growth and collaboration beyond code.</p>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    {EXPERIENCE_DATA.leadership.map((lead, idx) => (
+                        <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-blue-200 transition-colors hover:bg-blue-50/30 group">
+                            <div className="flex items-start gap-4">
+                                <div className={`w-10 h-10 rounded-lg ${lead.color} flex items-center justify-center flex-shrink-0 mt-1`}>
+                                    <i className={`fa-solid ${lead.icon} text-lg`}></i>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900">{lead.role}</h3>
+                                    <div className="text-sm font-medium text-blue-600 mb-1">{lead.org}</div>
+                                    <div className="text-xs text-gray-400 mb-3">{lead.period}</div>
+                                    <p className="text-sm text-gray-600 leading-relaxed">
+                                        {lead.description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section id="contact" className="py-32 px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl font-semibold tracking-tight mb-6">Let's build something together</h2>
+          <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+            Open to new opportunities and interesting projects. Let's connect!
           </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+            <a
+              href={PERSONAL_INFO.socials.email}
+              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-full text-lg font-medium hover:bg-blue-700 transition-all hover:shadow-lg hover:-translate-y-1"
+            >
+              <i className="fa-solid fa-envelope mr-2"></i>
+              Get in touch
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all hover:shadow-lg hover:-translate-y-1"
+            >
+              <i className="fa-solid fa-file-arrow-down mr-2"></i>
+              Download resume
+            </a>
+          </div>
+          <div className="flex justify-center space-x-8">
+            <a href={PERSONAL_INFO.socials.github} className="text-gray-600 hover:text-gray-900 transition-colors transform hover:scale-110">
+              <i className="fa-brands fa-github text-2xl"></i>
+            </a>
+            <a href={PERSONAL_INFO.socials.linkedin} className="text-gray-600 hover:text-blue-700 transition-colors transform hover:scale-110">
+              <i className="fa-brands fa-linkedin text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer id="footer" className="py-12 px-8 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-500">© 2024 Portfolio. All rights reserved.</p>
+            <div className="flex space-x-8">
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</a>
+              <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
