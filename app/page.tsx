@@ -2,6 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 // --- DATA CONSTANTS ---
 
@@ -19,13 +39,10 @@ const PERSONAL_INFO = {
   heroTitle: "Crafting digital experiences through code",
   heroSubtitle:
     "Passionate about creating seamless user experiences and robust, scalable solutions across web, mobile, and cloud platforms.",
-  avatarUrl: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg", // Keeping placeholder as real image path was generic/missing in history or local file
-  // Note: Original had /Remove background project (2) (1).png but might be local. Using generic for now or try to use local if known.
-  // Actually, let's try to use the local one if it exists, or fallback.
-  // I will use a safe default but comment the original path.
+  avatarUrl: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg",
   localAvatar: "/Remove background project (2) (1).png",
   socials: {
-    github: "https://github.com/fatih-fwzzz", // Inferred from project links
+    github: "https://github.com/fatih-fwzzz",
     linkedin: "#",
     stackoverflow: "#",
     twitter: "#",
@@ -79,7 +96,7 @@ const PROJECTS = [
     title: "LeaFit",
     category: "IOS APP",
     description:
-      "SwiftUI-based fitness application. (Description inferred from context as original text was identical to Looca copy-paste error in source).",
+      "SwiftUI-based fitness application.",
     techStack: ["Swift", "SwiftUI"],
     visualType: "image",
     image: "/portfolio_leafit.png",
@@ -194,8 +211,6 @@ const EXPERIENCE_DATA = {
   ]
 };
 
-// ... SKILLS and TECHNOLOGIES constants remain SAME ...
-
 const SKILLS = [
   { name: "React/Next.js", level: 75, color: "bg-blue-600" },
   { name: ".NET Core", level: 90, color: "bg-purple-600" },
@@ -248,7 +263,12 @@ export default function Portfolio() {
       <section id="hero-section" className="pt-32 pb-20 px-8 min-h-[600px] flex items-center">
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="flex-shrink-0 relative group">
+            <motion.div
+              className="flex-shrink-0 relative group"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "backOut" }}
+            >
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                  {/* Fallback to online avatar if local fails, but primarily try local if user provided it previously */}
                 <div className="relative w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition duration-500 bg-gray-200">
@@ -261,9 +281,14 @@ export default function Portfolio() {
                         }}
                     />
                 </div>
-            </div>
-            <div className="max-w-3xl">
-              <div className="flex flex-wrap items-center gap-3 mb-6">
+            </motion.div>
+            <motion.div
+              className="max-w-3xl"
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+            >
+              <motion.div className="flex flex-wrap items-center gap-3 mb-6" variants={fadeInUp}>
                 {PERSONAL_INFO.roles.map((role, idx) => (
                   <div
                     key={idx}
@@ -273,14 +298,14 @@ export default function Portfolio() {
                     {role.title}
                   </div>
                 ))}
-              </div>
-              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight">
+              </motion.div>
+              <motion.h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight" variants={fadeInUp}>
                 {PERSONAL_INFO.heroTitle}
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 font-light mb-10 leading-relaxed max-w-2xl">
+              </motion.h1>
+              <motion.p className="text-xl md:text-2xl text-gray-600 font-light mb-10 leading-relaxed max-w-2xl" variants={fadeInUp}>
                 {PERSONAL_INFO.heroSubtitle}
-              </p>
-              <div className="flex items-center space-x-6">
+              </motion.p>
+              <motion.div className="flex items-center space-x-6" variants={fadeInUp}>
                 <a
                   href="#work"
                   className="inline-flex items-center text-blue-600 hover:text-blue-700 text-lg font-medium transition-colors group"
@@ -295,8 +320,8 @@ export default function Portfolio() {
                   <i className="fa-brands fa-github mr-2"></i>
                   GitHub
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -308,7 +333,15 @@ export default function Portfolio() {
 
           <div className="space-y-32">
             {PROJECTS.map((project, idx) => (
-              <div key={project.id} id={project.id} className="group">
+              <motion.div
+                key={project.id}
+                id={project.id}
+                className="group"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+              >
                 <div className={`grid md:grid-cols-2 gap-16 items-center ${idx % 2 === 1 ? "" : ""}`}>
 
                   {/* Visual Side */}
@@ -359,17 +392,23 @@ export default function Portfolio() {
                   </div>
 
                 </div>
-              </div>
-            ))}.
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ABOUT SECTION */}
       <section id="about" className="py-32 px-8 bg-white">
-        <div className="max-w-5xl mx-auto">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
           <div className="grid md:grid-cols-2 gap-20 items-start">
-            <div>
+            <motion.div variants={fadeInUp}>
               <h2 className="text-5xl font-semibold tracking-tight mb-8">About Me</h2>
               <div className="space-y-6 text-xl text-gray-600 leading-relaxed">
                 <p>
@@ -382,8 +421,8 @@ export default function Portfolio() {
                     I believe in writing clean, maintainable code and following best practices. Always learning, always building.
                 </p>
               </div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeInUp}>
               <div className="mb-12">
                 <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">TECHNICAL SKILLS</h3>
                 <div className="space-y-4">
@@ -410,9 +449,9 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* EXPERIENCE SECTION */}
@@ -420,13 +459,23 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto">
 
             {/* 1. THE FOUNDATION */}
-            <div className="mb-24">
-                <h2 className="text-3xl font-bold mb-2">The Foundation</h2>
-                <p className="text-gray-500 mb-8 max-w-2xl">Where the journey began — the academic journey that built my technical foundation and problem-solving mindset.</p>
+            <motion.div
+              className="mb-24"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+                <motion.h2 className="text-3xl font-bold mb-2" variants={fadeInUp}>The Foundation</motion.h2>
+                <motion.p className="text-gray-500 mb-8 max-w-2xl" variants={fadeInUp}>Where the journey began — the academic journey that built my technical foundation and problem-solving mindset.</motion.p>
 
                 <div className="space-y-6">
                     {EXPERIENCE_DATA.foundation.map((edu, idx) => (
-                        <div key={idx} className="bg-white rounded-3xl p-8 border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm group">
+                        <motion.div
+                          key={idx}
+                          className="bg-white rounded-3xl p-8 border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm group"
+                          variants={fadeInUp}
+                        >
                             <div className="flex flex-col md:flex-row md:items-start gap-6">
                                 <div className={`w-14 h-14 rounded-2xl ${edu.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                                     <i className={`fa-solid ${edu.icon} text-2xl`}></i>
@@ -460,19 +509,29 @@ export default function Portfolio() {
                                     )}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
             {/* 2. THE REAL WORLD */}
-            <div className="mb-24">
-                <h2 className="text-3xl font-bold mb-2">The Real World</h2>
-                <p className="text-gray-500 mb-8 max-w-2xl">Professional experience building systems — solving real problems and delivering impactful software solutions.</p>
+            <motion.div
+              className="mb-24"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+                <motion.h2 className="text-3xl font-bold mb-2" variants={fadeInUp}>The Real World</motion.h2>
+                <motion.p className="text-gray-500 mb-8 max-w-2xl" variants={fadeInUp}>Professional experience building systems — solving real problems and delivering impactful software solutions.</motion.p>
 
                 <div className="space-y-8">
                     {EXPERIENCE_DATA.work.map((job, idx) => (
-                        <div key={idx} className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+                        <motion.div
+                          key={idx}
+                          className="bg-white rounded-3xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+                          variants={fadeInUp}
+                        >
                             <div className="p-8">
                                 <div className="flex flex-col md:flex-row gap-6">
                                     <div className={`w-14 h-14 rounded-2xl ${job.color} flex items-center justify-center flex-shrink-0`}>
@@ -510,19 +569,28 @@ export default function Portfolio() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
             {/* 3. ORGANIZATIONS & LEADERSHIP */}
-            <div>
-                <h2 className="text-3xl font-bold mb-2">Organizations & Leadership</h2>
-                <p className="text-gray-500 mb-8 max-w-2xl">Leading communities and initiatives — fostering growth and collaboration beyond code.</p>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+                <motion.h2 className="text-3xl font-bold mb-2" variants={fadeInUp}>Organizations & Leadership</motion.h2>
+                <motion.p className="text-gray-500 mb-8 max-w-2xl" variants={fadeInUp}>Leading communities and initiatives — fostering growth and collaboration beyond code.</motion.p>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     {EXPERIENCE_DATA.leadership.map((lead, idx) => (
-                        <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-blue-200 transition-colors hover:bg-blue-50/30 group">
+                        <motion.div
+                          key={idx}
+                          className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-blue-200 transition-colors hover:bg-blue-50/30 group"
+                          variants={fadeInUp}
+                        >
                             <div className="flex items-start gap-4">
                                 <div className={`w-10 h-10 rounded-lg ${lead.color} flex items-center justify-center flex-shrink-0 mt-1`}>
                                     <i className={`fa-solid ${lead.icon} text-lg`}></i>
@@ -536,16 +604,23 @@ export default function Portfolio() {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
         </div>
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-32 px-8 bg-white">
+      <motion.section
+        id="contact"
+        className="py-32 px-8 bg-white"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-semibold tracking-tight mb-6">Let's build something together</h2>
           <p className="text-xl text-gray-600 mb-12 leading-relaxed">
@@ -576,7 +651,7 @@ export default function Portfolio() {
             </a>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* FOOTER */}
       <footer id="footer" className="py-12 px-8 bg-white border-t border-gray-100">
