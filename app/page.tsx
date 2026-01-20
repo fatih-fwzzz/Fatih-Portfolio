@@ -56,7 +56,7 @@ const PERSONAL_INFO = {
   heroSubtitle:
     "Passionate about creating seamless user experiences and robust, scalable solutions across web, mobile, and cloud platforms.",
   avatarUrl: "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg",
-  localAvatar: "/Remove background project (2) (1).png",
+  localAvatar: "/pass-foto-1.png",
   socials: {
     github: "https://github.com/fatih-fwzzz",
     linkedin: "#",
@@ -280,22 +280,30 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <motion.div
-              className="flex-shrink-0 relative group"
+              className="relative w-80 h-96 flex items-center justify-center pl-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "backOut" }}
             >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                 {/* Fallback to online avatar if local fails, but primarily try local if user provided it previously */}
-                <div className="relative w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition duration-500 bg-gray-200">
-                    <img
-                        src={PERSONAL_INFO.localAvatar || PERSONAL_INFO.avatarUrl}
-                        alt="Profile"
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                            e.currentTarget.src = PERSONAL_INFO.avatarUrl;
-                        }}
-                    />
+
+
+                {/* Polaroid Card Style (Straight) */}
+                <div className="relative w-full h-full bg-white p-4 pb-16 shadow-2xl rounded-sm">
+                    <div className="w-full h-full overflow-hidden bg-gray-100 relative">
+                        <img
+                            src={PERSONAL_INFO.localAvatar || PERSONAL_INFO.avatarUrl}
+                            alt="Profile"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                                e.currentTarget.src = PERSONAL_INFO.avatarUrl;
+                            }}
+                        />
+                         <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
+                    </div>
+                     {/* Handwritten Name on Bottom of Polaroid */}
+                     <div className="absolute bottom-4 left-0 right-0 text-center">
+                        <p className="font-handwriting text-2xl text-gray-600"></p>
+                     </div>
                 </div>
             </motion.div>
             <motion.div
