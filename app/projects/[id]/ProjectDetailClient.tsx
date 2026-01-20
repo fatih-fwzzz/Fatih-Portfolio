@@ -25,6 +25,22 @@ const staggerContainer: Variants = {
   },
 };
 
+const typingContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const typingLetter: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 // --- TYPES (Duplicated for Client Component Safety) ---
 export interface ExtendedProjectData {
   title: string;
@@ -129,17 +145,46 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
             </Link>
           </motion.div>
 
-          <motion.div className="mb-6" variants={fadeInUp}>
-            <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full mb-4 uppercase tracking-wider">
+          <div className="mb-6">
+            <motion.span
+              variants={fadeInUp}
+              className="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full mb-4 uppercase tracking-wider"
+            >
               {project.category}
-            </span>
-            <h1 className="text-6xl font-semibold tracking-tight mb-6 leading-tight">
-              {project.title}
-            </h1>
-            <p className="text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
-              {project.description}
-            </p>
-          </motion.div>
+            </motion.span>
+
+            {/* TYPING ANIMATION FOR TITLE */}
+            <motion.h1
+              className="text-6xl font-semibold tracking-tight mb-6 leading-tight"
+              variants={typingContainer}
+            >
+              {project.title.split(" ").map((word, wordIndex) => (
+                <span key={wordIndex} className="inline-block whitespace-nowrap mr-3">
+                  {Array.from(word).map((char, charIndex) => (
+                    <motion.span key={charIndex} variants={typingLetter}>
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </motion.h1>
+
+            {/* TYPING ANIMATION FOR DESCRIPTION */}
+            <motion.p
+              className="text-2xl text-gray-600 font-light max-w-3xl leading-relaxed"
+              variants={typingContainer}
+            >
+              {project.description.split(" ").map((word, wordIndex) => (
+                <span key={wordIndex} className="inline-block whitespace-nowrap mr-2">
+                  {Array.from(word).map((char, charIndex) => (
+                    <motion.span key={charIndex} variants={typingLetter}>
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </motion.p>
+          </div>
 
           <motion.div className="flex items-center space-x-12 mt-8" variants={fadeInUp}>
             <div>
