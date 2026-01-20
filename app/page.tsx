@@ -246,7 +246,19 @@ const TECHNOLOGIES = [
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    // Handle hash navigation on mount for smooth scrolling
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Slight delay to ensure DOM is ready
+    }
+  }, []);
 
   if (!mounted) return null;
 
