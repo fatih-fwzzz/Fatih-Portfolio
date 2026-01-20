@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -30,9 +30,7 @@ interface ExtendedProjectData {
   }[];
   techStack: {
     name: string;
-    icon: string;
-    colorBg: string;
-    colorText: string;
+    logo: string; // URL to the logo image
     category: string;
   }[];
   impact: {
@@ -135,31 +133,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "Flutter",
-        icon: "fa-google",
+        logo: "https://cdn.simpleicons.org/flutter/02569B",
         category: "Mobile Framework",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "Firebase",
-        icon: "fa-fire",
+        logo: "https://cdn.simpleicons.org/firebase/FFCA28",
         category: "Backend Service",
-        colorBg: "bg-yellow-100",
-        colorText: "text-yellow-600",
       },
       {
         name: "Dart",
-        icon: "fa-code",
+        logo: "https://cdn.simpleicons.org/dart/0175C2",
         category: "Language",
-        colorBg: "bg-cyan-100",
-        colorText: "text-cyan-600",
       },
       {
         name: "Figma",
-        icon: "fa-figma",
+        logo: "https://cdn.simpleicons.org/figma/F24E1E",
         category: "Design Tool",
-        colorBg: "bg-purple-100",
-        colorText: "text-purple-600",
       },
     ],
     impact: {
@@ -272,31 +262,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "Swift",
-        icon: "fa-apple",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
         category: "Language",
-        colorBg: "bg-gray-100",
-        colorText: "text-gray-600",
       },
       {
         name: "ARKit",
-        icon: "fa-cube",
+        logo: "https://cdn.simpleicons.org/apple/000000",
         category: "Framework",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "CoreLocation",
-        icon: "fa-location-dot",
+        logo: "https://cdn.simpleicons.org/apple/000000",
         category: "Framework",
-        colorBg: "bg-green-100",
-        colorText: "text-green-600",
       },
       {
         name: "SceneKit",
-        icon: "fa-film",
+        logo: "https://cdn.simpleicons.org/apple/000000",
         category: "3D Engine",
-        colorBg: "bg-purple-100",
-        colorText: "text-purple-600",
       },
     ],
     impact: {
@@ -405,31 +387,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "SwiftUI",
-        icon: "fa-code",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
         category: "UI Framework",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "WatchKit",
-        icon: "fa-clock",
+        logo: "https://cdn.simpleicons.org/apple/000000",
         category: "Framework",
-        colorBg: "bg-gray-100",
-        colorText: "text-gray-600",
       },
       {
         name: "HealthKit",
-        icon: "fa-heart",
+        logo: "https://cdn.simpleicons.org/apple/FF2D55",
         category: "Data",
-        colorBg: "bg-red-100",
-        colorText: "text-red-600",
       },
       {
         name: "CoreBluetooth",
-        icon: "fa-bluetooth",
+        logo: "https://cdn.simpleicons.org/bluetooth/0082FC",
         category: "Connectivity",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
     ],
     impact: {
@@ -538,31 +512,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "SwiftUI",
-        icon: "fa-code",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
         category: "UI Framework",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "HealthKit",
-        icon: "fa-heart-pulse",
+        logo: "https://cdn.simpleicons.org/apple/FF2D55",
         category: "API",
-        colorBg: "bg-red-100",
-        colorText: "text-red-600",
       },
       {
         name: "Lottie",
-        icon: "fa-film",
+        logo: "https://cdn.simpleicons.org/lottiefiles/99F6E4",
         category: "Animation",
-        colorBg: "bg-green-100",
-        colorText: "text-green-600",
       },
       {
         name: "CoreData",
-        icon: "fa-database",
+        logo: "https://cdn.simpleicons.org/apple/000000",
         category: "Storage",
-        colorBg: "bg-gray-100",
-        colorText: "text-gray-600",
       },
     ],
     impact: {
@@ -671,31 +637,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "Next.js",
-        icon: "fa-react",
+        logo: "https://cdn.simpleicons.org/nextdotjs/000000",
         category: "Frontend",
-        colorBg: "bg-gray-100",
-        colorText: "text-gray-600",
       },
       {
         name: ".NET Core",
-        icon: "fa-microsoft",
+        logo: "https://cdn.simpleicons.org/dotnet/512BD4",
         category: "Backend",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "Azure",
-        icon: "fa-cloud",
+        logo: "https://cdn.simpleicons.org/azure/0078D4",
         category: "Cloud",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "MSSQL",
-        icon: "fa-database",
+        logo: "https://cdn.simpleicons.org/microsoftsqlserver/CC2927",
         category: "Database",
-        colorBg: "bg-red-100",
-        colorText: "text-red-600",
       },
     ],
     impact: {
@@ -804,31 +762,23 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "Python",
-        icon: "fa-python",
+        logo: "https://cdn.simpleicons.org/python/3776AB",
         category: "Language",
-        colorBg: "bg-blue-100",
-        colorText: "text-blue-600",
       },
       {
         name: "Flask",
-        icon: "fa-flask",
+        logo: "https://cdn.simpleicons.org/flask/000000",
         category: "Backend",
-        colorBg: "bg-gray-100",
-        colorText: "text-gray-600",
       },
       {
         name: "MySQL",
-        icon: "fa-database",
+        logo: "https://cdn.simpleicons.org/mysql/4479A1",
         category: "Database",
-        colorBg: "bg-orange-100",
-        colorText: "text-orange-600",
       },
       {
         name: "React",
-        icon: "fa-react",
+        logo: "https://cdn.simpleicons.org/react/61DAFB",
         category: "Frontend",
-        colorBg: "bg-cyan-100",
-        colorText: "text-cyan-600",
       },
     ],
     impact: {
@@ -1137,14 +1087,15 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
             {project.techStack.map((tech, idx) => (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-2xl text-center hover:shadow-lg transition-shadow border border-gray-100"
+                className="bg-white p-8 rounded-2xl text-center hover:shadow-lg transition-shadow border border-gray-100 flex flex-col items-center"
               >
-                <div
-                  className={`w-16 h-16 ${tech.colorBg} rounded-2xl flex items-center justify-center mx-auto mb-4`}
-                >
-                  <i
-                    className={`fa-brands ${tech.icon} ${tech.colorText} text-3xl`}
-                  ></i>
+                <div className="w-16 h-16 relative mb-4">
+                  <Image
+                    src={tech.logo}
+                    alt={tech.name}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
                 <h4 className="font-semibold mb-2">{tech.name}</h4>
                 <p className="text-sm text-gray-600">{tech.category}</p>
