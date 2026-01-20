@@ -445,7 +445,7 @@ export default function Portfolio() {
           viewport={{ once: true }}
           variants={staggerContainer}
         >
-          <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div className="grid md:grid-cols-2 gap-20 items-start mb-20">
             <motion.div variants={fadeInUp}>
               <h2 className="text-5xl font-semibold tracking-tight mb-8">About Me</h2>
               <div className="space-y-6 text-xl text-gray-600 leading-relaxed">
@@ -462,33 +462,131 @@ export default function Portfolio() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <div className="mb-12">
-                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">TECHNICAL SKILLS</h3>
-                <div className="space-y-4">
-                  {SKILLS.map((skill, idx) => (
-                    <div key={idx} className="group">
-                        <div className="flex justify-between items-center mb-1">
-                            <span className="font-medium text-gray-700">{skill.name}</span>
-                            <span className="text-sm text-gray-400">{skill.level}%</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                            <div className={`${skill.color} h-2 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000`} style={{ width: `${skill.level}%`, transform: 'scaleX(1)' }}></div>
-                        </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">TECHNOLOGIES</h3>
-                <div className="flex flex-wrap gap-3">
-                  {TECHNOLOGIES.map((tech, idx) => (
-                    <span key={idx} className="px-4 py-2 bg-white border border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors rounded-full text-sm font-medium text-gray-600">
-                      {tech}
-                    </span>
+                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">MOMENTS & INTERESTS</h3>
+                <div className="relative w-full h-[400px] flex items-center justify-center">
+                  {[
+                    {
+                      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
+                      label: "Coding",
+                      rotate: "-6deg",
+                      top: "10%",
+                      left: "5%",
+                      zIndex: 1
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
+                      label: "Tech",
+                      rotate: "12deg",
+                      top: "20%",
+                      right: "5%",
+                      zIndex: 2
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&h=300&fit=crop",
+                      label: "Music",
+                      rotate: "-12deg",
+                      bottom: "10%",
+                      left: "15%",
+                      zIndex: 3
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&h=300&fit=crop",
+                      label: "Travel",
+                      rotate: "8deg",
+                      bottom: "5%",
+                      right: "15%",
+                      zIndex: 4
+                    },
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="absolute bg-white p-3 shadow-xl rounded-sm cursor-pointer"
+                      style={{
+                        top: item.top,
+                        left: item.left,
+                        right: item.right,
+                        bottom: item.bottom,
+                        transform: `rotate(${item.rotate})`,
+                        zIndex: item.zIndex
+                      }}
+                      initial={{ scale: 0, opacity: 0, rotate: item.rotate }}
+                      whileInView={{ scale: 1, opacity: 1, rotate: item.rotate }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: idx * 0.1,
+                        duration: 0.5,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      whileHover={{
+                        scale: 1.2,
+                        rotate: "0deg",
+                        zIndex: 50,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <div className="w-48 h-48 md:w-56 md:h-56 overflow-hidden mb-2 relative">
+                        <img
+                          src={item.src}
+                          alt={item.label}
+                          className="w-full h-full object-cover"
+                        />
+                         <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors"></div>
+                      </div>
+                      <p className="text-center font-handwriting text-gray-600 font-medium">{item.label}</p>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </motion.div>
           </div>
+
+          {/* Technologies - Full Width Centered */}
+          <motion.div variants={fadeInUp} className="mt-16">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">Love to work with these tools</h3>
+            <div className="space-y-6 max-w-4xl mx-auto">
+
+              {/* Row 1 - Scroll Left */}
+              <div className="relative overflow-hidden w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
+                <motion.div
+                  className="flex gap-4 w-max"
+                  animate={{ x: "-50%" }}
+                  transition={{
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: 30
+                  }}
+                >
+                  {[...TECHNOLOGIES.slice(0, 7), ...TECHNOLOGIES.slice(0, 7)].map((tech, idx) => (
+                    <span key={idx} className="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-base font-medium text-gray-700 whitespace-nowrap">
+                      {tech}
+                    </span>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Row 2 - Scroll Right */}
+              <div className="relative overflow-hidden w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent">
+                <motion.div
+                  className="flex gap-4 w-max"
+                  initial={{ x: "-50%" }}
+                  animate={{ x: "0%" }}
+                  transition={{
+                    repeat: Infinity,
+                    ease: "linear",
+                    duration: 30
+                  }}
+                >
+                  {[...TECHNOLOGIES.slice(7), ...TECHNOLOGIES.slice(7)].map((tech, idx) => (
+                    <span key={idx} className="px-6 py-3 bg-gray-50 border border-gray-200 rounded-full text-base font-medium text-gray-700 whitespace-nowrap">
+                      {tech}
+                    </span>
+                  ))}
+                </motion.div>
+              </div>
+
+            </div>
+          </motion.div>
         </motion.div>
       </section>
 
