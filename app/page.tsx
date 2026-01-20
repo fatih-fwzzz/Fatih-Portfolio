@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
@@ -392,32 +393,36 @@ export default function Portfolio() {
 
                   {/* Visual Side */}
                   <div className={`${idx % 2 === 1 ? "md:order-2" : "md:order-1"}`}>
-                    <div className="rounded-3xl overflow-hidden shadow-2xl transform group-hover:-translate-y-2 transition duration-500 bg-white border border-gray-100">
-                        <div className="aspect-video relative overflow-hidden bg-gray-200">
-                             {/* Attempt to show project image, fallback to title if needed */}
-                             <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                    e.currentTarget.style.display = 'none';
-                                    e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center', 'bg-gray-100');
-                                    const fallback = document.createElement('div');
-                                    fallback.className = 'text-gray-400 font-bold text-xl';
-                                    fallback.innerText = project.title;
-                                    e.currentTarget.parentElement?.appendChild(fallback);
-                                }}
-                             />
-                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
-                        </div>
-                    </div>
+                    <Link href={`/projects/${project.id}`}>
+                      <div className="rounded-3xl overflow-hidden shadow-2xl transform group-hover:-translate-y-2 transition duration-500 bg-white border border-gray-100 cursor-pointer">
+                          <div className="aspect-video relative overflow-hidden bg-gray-200">
+                               {/* Attempt to show project image, fallback to title if needed */}
+                               <img
+                                  src={project.image}
+                                  alt={project.title}
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                      e.currentTarget.style.display = 'none';
+                                      e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center', 'bg-gray-100');
+                                      const fallback = document.createElement('div');
+                                      fallback.className = 'text-gray-400 font-bold text-xl';
+                                      fallback.innerText = project.title;
+                                      e.currentTarget.parentElement?.appendChild(fallback);
+                                  }}
+                               />
+                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                          </div>
+                      </div>
+                    </Link>
                   </div>
 
                   {/* Text Side */}
                   <div className={`${idx % 2 === 1 ? "md:order-1" : "md:order-2"}`}>
                     <div className="text-sm font-medium text-gray-500 mb-3 tracking-wide uppercase">{project.category}</div>
                     <div className="flex justify-between items-start">
-                        <h3 className="text-4xl font-semibold mb-6 tracking-tight text-gray-900">{project.title}</h3>
+                        <h3 className="text-4xl font-semibold mb-6 tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
+                          <Link href={`/projects/${project.id}`}>{project.title}</Link>
+                        </h3>
                         {project.github && (
                             <a href={project.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors">
                                 <i className="fa-brands fa-github text-2xl"></i>
