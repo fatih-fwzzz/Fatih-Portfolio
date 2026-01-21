@@ -11,7 +11,7 @@ const fadeInUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -85,42 +85,51 @@ interface ProjectDetailClientProps {
   nextProjectData?: ExtendedProjectData; // Optional data for the next project preview
 }
 
-export default function ProjectDetailClient({ project, nextProjectData }: ProjectDetailClientProps) {
+export default function ProjectDetailClient({
+  project,
+  nextProjectData,
+}: ProjectDetailClientProps) {
   return (
     <main className="font-sf bg-white text-gray-900 selection:bg-blue-100">
       {/* HEADER */}
-      <nav id="header" className="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100 transition-all duration-300">
+      <nav
+        id="header"
+        className="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100 transition-all duration-300"
+      >
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-semibold tracking-tight flex items-center group">
+            <Link
+              href="/"
+              className="text-xl font-semibold tracking-tight flex items-center group"
+            >
               <i className="fa-solid fa-code mr-2 text-blue-600 group-hover:rotate-12 transition-transform"></i>
               Fatih
             </Link>
             <div className="hidden md:flex items-center space-x-10">
-                <Link
-                  href="/#work"
-                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/#experience"
-                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Experience
-                </Link>
-                <Link
-                  href="/#about"
-                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/#contact"
-                  className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Contact
-                </Link>
+              <Link
+                href="/#work"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Projects
+              </Link>
+              <Link
+                href="/#about"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/#experience"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Experience
+              </Link>
+              <Link
+                href="/#contact"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Contact
+              </Link>
             </div>
           </div>
         </div>
@@ -159,7 +168,10 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
               variants={typingContainer}
             >
               {project.title.split(" ").map((word, wordIndex) => (
-                <span key={wordIndex} className="inline-block whitespace-nowrap mr-3">
+                <span
+                  key={wordIndex}
+                  className="inline-block whitespace-nowrap mr-3"
+                >
                   {Array.from(word).map((char, charIndex) => (
                     <motion.span key={charIndex} variants={typingLetter}>
                       {char}
@@ -175,7 +187,10 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
               variants={typingContainer}
             >
               {project.description.split(" ").map((word, wordIndex) => (
-                <span key={wordIndex} className="inline-block whitespace-nowrap mr-2">
+                <span
+                  key={wordIndex}
+                  className="inline-block whitespace-nowrap mr-2"
+                >
                   {Array.from(word).map((char, charIndex) => (
                     <motion.span key={charIndex} variants={typingLetter}>
                       {char}
@@ -186,7 +201,10 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
             </motion.p>
           </div>
 
-          <motion.div className="flex items-center space-x-12 mt-8" variants={fadeInUp}>
+          <motion.div
+            className="flex items-center space-x-12 mt-8"
+            variants={fadeInUp}
+          >
             <div>
               <p className="text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">
                 ROLE
@@ -303,10 +321,15 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
           variants={staggerContainer}
         >
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeInUp} className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+            >
               Key Features
             </motion.h2>
-            <motion.h3 variants={fadeInUp} className="text-4xl font-semibold">What makes it special</motion.h3>
+            <motion.h3 variants={fadeInUp} className="text-4xl font-semibold">
+              What makes it special
+            </motion.h3>
           </div>
           <div className="grid md:grid-cols-3 gap-12">
             {project.features.map((feature, idx) => (
@@ -356,20 +379,33 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
           variants={staggerContainer}
         >
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeInUp} className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+            >
               Design Process
             </motion.h2>
-            <motion.h3 variants={fadeInUp} className="text-4xl font-semibold mb-6">
+            <motion.h3
+              variants={fadeInUp}
+              className="text-4xl font-semibold mb-6"
+            >
               From concept to reality
             </motion.h3>
-            <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            >
               A structured approach to solving complex problems through
               iteration and validation.
             </motion.p>
           </div>
           <div className="space-y-16">
             {project.process.map((step, idx) => (
-              <motion.div key={idx} className="flex items-start space-x-8" variants={fadeInUp}>
+              <motion.div
+                key={idx}
+                className="flex items-start space-x-8"
+                variants={fadeInUp}
+              >
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
                     {step.step}
@@ -413,13 +449,22 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
           variants={staggerContainer}
         >
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeInUp} className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+            >
               Technology Stack
             </motion.h2>
-            <motion.h3 variants={fadeInUp} className="text-4xl font-semibold mb-6">
+            <motion.h3
+              variants={fadeInUp}
+              className="text-4xl font-semibold mb-6"
+            >
               Built with modern tools
             </motion.h3>
-            <motion.p variants={fadeInUp} className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.p
+              variants={fadeInUp}
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            >
               Robust architecture designed for scale and performance.
             </motion.p>
           </div>
@@ -457,10 +502,18 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
           variants={staggerContainer}
         >
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeInUp} className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+            >
               Impact & Results
             </motion.h2>
-            <motion.h3 variants={fadeInUp} className="text-4xl font-semibold mb-6">Measurable success</motion.h3>
+            <motion.h3
+              variants={fadeInUp}
+              className="text-4xl font-semibold mb-6"
+            >
+              Measurable success
+            </motion.h3>
           </div>
           <div className="grid md:grid-cols-3 gap-12 mb-16">
             {project.impact.stats.map((stat, idx) => (
@@ -508,10 +561,15 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
             variants={staggerContainer}
           >
             <div className="text-center mb-12">
-              <motion.h2 variants={fadeInUp} className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              <motion.h2
+                variants={fadeInUp}
+                className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+              >
                 Next Project
               </motion.h2>
-              <motion.h3 variants={fadeInUp} className="text-3xl font-semibold">Explore more work</motion.h3>
+              <motion.h3 variants={fadeInUp} className="text-3xl font-semibold">
+                Explore more work
+              </motion.h3>
             </div>
             <motion.div variants={fadeInUp}>
               <Link
@@ -538,9 +596,7 @@ export default function ProjectDetailClient({ project, nextProjectData }: Projec
                   <h4 className="text-2xl font-semibold mb-2">
                     {nextProjectData.title}
                   </h4>
-                  <p className="text-gray-600">
-                    {nextProjectData.category}
-                  </p>
+                  <p className="text-gray-600">{nextProjectData.category}</p>
                 </div>
               </Link>
             </motion.div>

@@ -1,9 +1,430 @@
 import React from "react";
 import Link from "next/link";
-import ProjectDetailClient, { ExtendedProjectData } from "./ProjectDetailClient";
+import ProjectDetailClient, {
+  ExtendedProjectData,
+} from "./ProjectDetailClient";
 
 // --- DUMMY DATA (Kept in Server Component for SSG) ---
 const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
+  lantera: {
+    title: "Lantera",
+    category: "iOS App",
+    description:
+      "A comprehensive health tracking companion designed for caregivers managing elderly health, featuring voice-based data logging and AI-powered insights.",
+    role: "Tech Lead",
+    timeline: "3 Months",
+    year: "2025",
+    heroImage: "/portfolio-lantera.png",
+    mainImage: "/portfolio-lantera.png",
+    overview:
+      "Lantera was built to solve a real problem faced by families caring for elderly relatives: the difficulty of tracking blood pressure and blood sugar readings consistently. Traditional paper logs are easy to lose, and manual tracking apps require too much typing. We created a voice-first experience that makes logging as simple as speaking.",
+    challenge:
+      "The main technical challenge was building a reliable speech recognition system that works in Indonesian language with medical terminology, while maintaining HIPAA-like privacy standards. We also needed to sync data seamlessly across family members' devices without compromising security.",
+    challengeBullets: [
+      "Implementing accurate Indonesian speech recognition for medical terms",
+      "Ensuring HIPAA-compliant data encryption and sync",
+      "Creating intuitive trend visualizations for non-technical users",
+    ],
+    features: [
+      {
+        icon: "fa-microphone",
+        colorBg: "bg-blue-100",
+        colorText: "text-blue-600",
+        title: "Voice Input",
+        desc: "Speak your data, no typing required.",
+      },
+      {
+        icon: "fa-chart-line",
+        colorBg: "bg-green-100",
+        colorText: "text-green-600",
+        title: "Trend Analysis",
+        desc: "AI-powered insights on health patterns.",
+      },
+      {
+        icon: "fa-bell",
+        colorBg: "bg-yellow-100",
+        colorText: "text-yellow-600",
+        title: "Smart Reminders",
+        desc: "Never miss a measurement with contextual alerts.",
+      },
+      {
+        icon: "fa-cloud",
+        colorBg: "bg-purple-100",
+        colorText: "text-purple-600",
+        title: "CloudKit Sync",
+        desc: "Seamless family data sharing.",
+      },
+      {
+        icon: "fa-shield-halved",
+        colorBg: "bg-red-100",
+        colorText: "text-red-600",
+        title: "Privacy First",
+        desc: "End-to-end encryption for health data.",
+      },
+      {
+        icon: "fa-brain",
+        colorBg: "bg-indigo-100",
+        colorText: "text-indigo-600",
+        title: "Apple Intelligence",
+        desc: "On-device ML for pattern recognition.",
+      },
+    ],
+    process: [
+      {
+        step: 1,
+        title: "User Research & Interviews",
+        description:
+          "Conducted in-depth interviews with 50+ caregivers to understand pain points in health tracking. Discovered that voice input was the #1 requested feature.",
+        stats: [
+          { value: "50+", label: "Caregiver Interviews" },
+          { value: "200+", label: "Survey Responses" },
+        ],
+      },
+      {
+        step: 2,
+        title: "SwiftUI Prototyping",
+        description:
+          "Built high-fidelity prototypes using SwiftUI with a focus on accessibility. Tested voice recognition accuracy with various Indonesian accents and medical terms.",
+        stats: [
+          { value: "95%", label: "Voice Accuracy" },
+          { value: "10", label: "Iterations" },
+        ],
+      },
+      {
+        step: 3,
+        title: "CloudKit Integration & Launch",
+        description:
+          "Integrated CloudKit for secure, private sync across family devices. Launched on App Store with TestFlight beta program for early adopters.",
+      },
+    ],
+    techStack: [
+      {
+        name: "Swift",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
+        category: "Language",
+      },
+      {
+        name: "SwiftUI",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
+        category: "UI Framework",
+      },
+      {
+        name: "SwiftData",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "Persistence",
+      },
+      {
+        name: "CloudKit",
+        logo: "https://cdn.simpleicons.org/icloud/3693F3",
+        category: "Cloud Sync",
+      },
+      {
+        name: "SFSpeech",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "Speech Recognition",
+      },
+      {
+        name: "Apple Intelligence",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "AI/ML",
+      },
+    ],
+    impact: {
+      stats: [
+        { value: "1k+", label: "Active Users", color: "text-blue-600" },
+        { value: "4.9", label: "App Store Rating", color: "text-green-600" },
+        { value: "10k+", label: "Health Logs", color: "text-purple-600" },
+      ],
+      quote: {
+        text: "Lantera made tracking my mother's blood pressure so much easier. I just speak the numbers and it's saved. The trends help me know when to call the doctor.",
+        author: "Siti Rahman",
+        role: "Caregiver",
+      },
+    },
+    gallery: [
+      "/portfolio-lantera.png",
+      "/portfolio-lantera.png",
+      "/portfolio-lantera.png",
+      "/portfolio-lantera.png",
+    ],
+    nextProject: "cococo",
+  },
+  cococo: {
+    title: "Coco App Reworked",
+    category: "iOS App",
+    description:
+      "A complete rework of a legacy travel booking app, modernizing the codebase and optimizing the booking flow for better conversion rates.",
+    role: "iOS Engineer",
+    timeline: "4 Months",
+    year: "2024",
+    heroImage: "/portfolio-cococo.png",
+    mainImage: "/portfolio-cococo.png",
+    overview:
+      "Coco was a working travel app with a loyal user base, but the codebase was built with outdated patterns from iOS 10 era. The booking flow had a 40% drop-off rate. Our mission was to modernize the architecture while maintaining backward compatibility and dramatically improve the user experience.",
+    challenge:
+      "The biggest challenge was refactoring a UIKit-based app with minimal documentation while users were actively using it. We had to modernize the code incrementally, introduce SwiftUI where possible, and migrate to modern networking patterns—all without breaking existing features.",
+    challengeBullets: [
+      "Refactoring legacy UIKit code without disrupting active users",
+      "Migrating from outdated networking to URLSession best practices",
+      "Implementing comprehensive unit tests for untested codebase",
+    ],
+    features: [
+      {
+        icon: "fa-mobile-screen",
+        colorBg: "bg-blue-100",
+        colorText: "text-blue-600",
+        title: "Modern UI",
+        desc: "SwiftUI components integrated with UIKit.",
+      },
+      {
+        icon: "fa-bolt",
+        colorBg: "bg-yellow-100",
+        colorText: "text-yellow-600",
+        title: "Fast Booking",
+        desc: "Streamlined 3-step booking process.",
+      },
+      {
+        icon: "fa-shield-halved",
+        colorBg: "bg-red-100",
+        colorText: "text-red-600",
+        title: "Secure Payments",
+        desc: "PCI-compliant payment integration.",
+      },
+      {
+        icon: "fa-database",
+        colorBg: "bg-purple-100",
+        colorText: "text-purple-600",
+        title: "Supabase Backend",
+        desc: "Modern real-time database sync.",
+      },
+      {
+        icon: "fa-vial",
+        colorBg: "bg-green-100",
+        colorText: "text-green-600",
+        title: "Unit Tested",
+        desc: "85% code coverage with XCTest.",
+      },
+      {
+        icon: "fa-gauge-high",
+        colorBg: "bg-orange-100",
+        colorText: "text-orange-600",
+        title: "Performance",
+        desc: "50% faster load times.",
+      },
+    ],
+    process: [
+      {
+        step: 1,
+        title: "Code Audit & Analysis",
+        description:
+          "Analyzed the existing codebase to identify technical debt hotspots. Mapped user flows to pinpoint conversion bottlenecks.",
+        stats: [
+          { value: "15k", label: "Lines Audited" },
+          { value: "40%", label: "Drop-off Rate" },
+        ],
+      },
+      {
+        step: 2,
+        title: "Incremental Refactoring",
+        description:
+          "Refactored critical paths screen-by-screen, introducing SwiftUI views wrapped in UIHostingController. Migrated networking to async/await URLSession.",
+        stats: [
+          { value: "20+", label: "Screens Rebuilt" },
+          { value: "85%", label: "Test Coverage" },
+        ],
+      },
+      {
+        step: 3,
+        title: "A/B Testing & Launch",
+        description:
+          "Deployed new booking flow to 20% of users via feature flags. Monitored conversion metrics and gradually rolled out to 100%.",
+      },
+    ],
+    techStack: [
+      {
+        name: "UIKit",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "UI Framework",
+      },
+      {
+        name: "Swift",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
+        category: "Language",
+      },
+      {
+        name: "SwiftUI",
+        logo: "https://cdn.simpleicons.org/swift/F05138",
+        category: "Modern UI",
+      },
+      {
+        name: "URLSession",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "Networking",
+      },
+      {
+        name: "XCTest",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "Testing",
+      },
+      {
+        name: "Supabase",
+        logo: "https://cdn.simpleicons.org/supabase/3ECF8E",
+        category: "Backend",
+      },
+    ],
+    impact: {
+      stats: [
+        { value: "65%", label: "Conversion Rate", color: "text-green-600" },
+        { value: "50%", label: "Faster Load Times", color: "text-blue-600" },
+        { value: "85%", label: "Code Coverage", color: "text-purple-600" },
+      ],
+      quote: {
+        text: "The new booking flow is so much smoother. I used to give up halfway through, but now it's just three taps and I'm done.",
+        author: "Made Wijaya",
+        role: "Beta Tester",
+      },
+    },
+    gallery: [
+      "/portfolio-cococo.png",
+      "/portfolio-cococo.png",
+      "/portfolio-cococo.png",
+      "/portfolio-cococo.png",
+    ],
+    nextProject: "legend-of-gardatara",
+  },
+  "legend-of-gardatara": {
+    title: "Legend of Gardatara",
+    category: "iOS Game App",
+    description:
+      "A 2D horizontal-lane tower defense game combining Indonesian folklore heroes with strategic gameplay to battle alien invaders.",
+    role: "Game Developer",
+    timeline: "8 Months",
+    year: "2024",
+    heroImage: "/portfolio_log.png",
+    mainImage: "/portfolio_log.png",
+    overview:
+      "Legend of Gardatara was born from a passion to showcase Indonesian cultural heritage through gaming. We wanted to create a tower defense game that's not just fun, but also introduces global players to iconic Indonesian folklore characters like Gatotkaca, Srikandi, and Hanoman in an exciting sci-fi setting.",
+    challenge:
+      "The core challenge was balancing authentic cultural representation with engaging gameplay mechanics. We also had to optimize Unity performance for smooth 60fps gameplay on older iPhone models while managing memory constraints from sprite animations and particle effects.",
+    challengeBullets: [
+      "Researching and authentically representing Indonesian folklore heroes",
+      "Optimizing Unity 2D for 60fps on older iPhone models",
+      "Balancing strategic depth with accessible gameplay",
+    ],
+    features: [
+      {
+        icon: "fa-chess",
+        colorBg: "bg-blue-100",
+        colorText: "text-blue-600",
+        title: "Strategic Gameplay",
+        desc: "Plan hero placement in horizontal lanes.",
+      },
+      {
+        icon: "fa-users",
+        colorBg: "bg-purple-100",
+        colorText: "text-purple-600",
+        title: "Folklore Heroes",
+        desc: "10+ unique Indonesian legendary characters.",
+      },
+      {
+        icon: "fa-wand-magic-sparkles",
+        colorBg: "bg-yellow-100",
+        colorText: "text-yellow-600",
+        title: "Special Abilities",
+        desc: "Each hero has unique powers based on their legend.",
+      },
+      {
+        icon: "fa-gamepad",
+        colorBg: "bg-red-100",
+        colorText: "text-red-600",
+        title: "Campaign Mode",
+        desc: "30 levels of increasing difficulty.",
+      },
+      {
+        icon: "fa-trophy",
+        colorBg: "bg-green-100",
+        colorText: "text-green-600",
+        title: "Leaderboards",
+        desc: "Global rankings via Game Center.",
+      },
+      {
+        icon: "fa-palette",
+        colorBg: "bg-orange-100",
+        colorText: "text-orange-600",
+        title: "Hand-Drawn Art",
+        desc: "Unique art style blending traditional and modern.",
+      },
+    ],
+    process: [
+      {
+        step: 1,
+        title: "Cultural Research & Design",
+        description:
+          "Studied Indonesian folklore texts and consulted cultural experts to ensure respectful and accurate representation of each hero. Created concept art blending traditional wayang aesthetics with modern game design.",
+        stats: [
+          { value: "20+", label: "Folklore Sources" },
+          { value: "10", label: "Hero Designs" },
+        ],
+      },
+      {
+        step: 2,
+        title: "Unity Development",
+        description:
+          "Built the core tower defense mechanics in Unity 2D using C#. Implemented lane-based movement, hero ability systems, and enemy AI. Optimized sprite atlases and object pooling for performance.",
+        stats: [
+          { value: "60", label: "FPS Target" },
+          { value: "30", label: "Levels Built" },
+        ],
+      },
+      {
+        step: 3,
+        title: "Playtesting & Launch",
+        description:
+          "Conducted extensive playtesting to balance difficulty curves and hero abilities. Launched on App Store with localization for Indonesian and English players.",
+      },
+    ],
+    techStack: [
+      {
+        name: "Unity 2D",
+        logo: "https://cdn.simpleicons.org/unity/000000",
+        category: "Game Engine",
+      },
+      {
+        name: "C#",
+        logo: "https://cdn.simpleicons.org/csharp/239120",
+        category: "Language",
+      },
+      {
+        name: "Game Center",
+        logo: "https://cdn.simpleicons.org/apple/000000",
+        category: "Services",
+      },
+      {
+        name: "Illustrator",
+        logo: "https://cdn.simpleicons.org/adobeillustrator/FF9A00",
+        category: "Art Tool",
+      },
+    ],
+    impact: {
+      stats: [
+        { value: "5k+", label: "Downloads", color: "text-blue-600" },
+        { value: "4.7", label: "App Store Rating", color: "text-green-600" },
+        { value: "10+", label: "Folklore Heroes", color: "text-purple-600" },
+      ],
+      quote: {
+        text: "I never knew about Gatotkaca before this game. Now I'm reading more about Indonesian mythology. This is education through fun!",
+        author: "Alex Chen",
+        role: "Player from Singapore",
+      },
+    },
+    gallery: [
+      "/portfolio_log.png",
+      "/portfolio_log.png",
+      "/portfolio_log.png",
+      "/portfolio_log.png",
+    ],
+    nextProject: "leafit",
+  },
   hutrivia: {
     title: "HUTRIVIA",
     category: "Mobile App",
@@ -131,7 +552,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_hutrivia.png",
       "/portfolio_hutrivia.png",
     ],
-    nextProject: "looca",
+    nextProject: "lantera",
   },
   looca: {
     title: "LOOCA",
@@ -791,9 +1212,6 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
 
   // Render Client Component with props
   return (
-    <ProjectDetailClient
-      project={project}
-      nextProjectData={nextProjectData}
-    />
+    <ProjectDetailClient project={project} nextProjectData={nextProjectData} />
   );
 }
