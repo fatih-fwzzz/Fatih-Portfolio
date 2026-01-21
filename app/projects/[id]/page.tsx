@@ -11,7 +11,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     category: "iOS App",
     description:
       "A comprehensive health tracking companion designed for caregivers managing elderly health, featuring voice-based data logging and AI-powered insights.",
-    role: "Tech Lead",
+    role: "Lead iOS Developer",
     timeline: "3 Months",
     year: "2025",
     heroImage: "/portfolio-lantera.png",
@@ -19,11 +19,11 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     overview:
       "Lantera was built to solve a real problem faced by families caring for elderly relatives: the difficulty of tracking blood pressure and blood sugar readings consistently. Traditional paper logs are easy to lose, and manual tracking apps require too much typing. We created a voice-first experience that makes logging as simple as speaking.",
     challenge:
-      "The main technical challenge was building a reliable speech recognition system that works in Indonesian language with medical terminology, while maintaining HIPAA-like privacy standards. We also needed to sync data seamlessly across family members' devices without compromising security.",
+      "The main technical challenge was building a reliable speech recognition system for Indonesian medical terms and an accurate OCR engine to extract metrics like cholesterol and hypertension from lab results. Privacy was paramount, so all processing had to happen on-device.",
     challengeBullets: [
-      "Implementing accurate Indonesian speech recognition for medical terms",
-      "Ensuring HIPAA-compliant data encryption and sync",
-      "Creating intuitive trend visualizations for non-technical users",
+      "Implementing accurate Indonesian speech recognition",
+      "Building an OCR system to parsing complex medical lab results",
+      "Ensuring personal health data stays private and secure",
     ],
     features: [
       {
@@ -48,11 +48,18 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         desc: "Never miss a measurement with contextual alerts.",
       },
       {
+        icon: "fa-file-medical",
+        colorBg: "bg-teal-100",
+        colorText: "text-teal-600",
+        title: "Smart Extraction",
+        desc: "Extracts cholesterol & hypertension data from medical results.",
+      },
+      {
         icon: "fa-cloud",
         colorBg: "bg-purple-100",
         colorText: "text-purple-600",
-        title: "CloudKit Sync",
-        desc: "Seamless family data sharing.",
+        title: "iCloud Sync",
+        desc: "Your data on all your devices.",
       },
       {
         icon: "fa-shield-halved",
@@ -94,7 +101,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         step: 3,
         title: "CloudKit Integration & Launch",
         description:
-          "Integrated CloudKit for secure, private sync across family devices. Launched on App Store with TestFlight beta program for early adopters.",
+          "Integrated CloudKit to keep data in sync across iPhone, iPad, and Apple Watch automatically. Launched on App Store with TestFlight beta program for early adopters.",
       },
     ],
     techStack: [
@@ -105,45 +112,41 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "SwiftUI",
-        logo: "https://cdn.simpleicons.org/swift/F05138",
+        logo: "https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png",
         category: "UI Framework",
       },
       {
         name: "SwiftData",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/swiftdata.png",
         category: "Persistence",
       },
       {
         name: "CloudKit",
-        logo: "https://cdn.simpleicons.org/icloud/3693F3",
+        logo: "/logo/cloudkit.png",
         category: "Cloud Sync",
       },
       {
         name: "SFSpeech",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/sfspeech.png",
         category: "Speech Recognition",
       },
       {
         name: "Apple Intelligence",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/apple-intelligence.png",
         category: "AI/ML",
       },
     ],
     impact: {
-      stats: [
-        { value: "1k+", label: "Active Users", color: "text-blue-600" },
-        { value: "4.9", label: "App Store Rating", color: "text-green-600" },
-        { value: "10k+", label: "Health Logs", color: "text-purple-600" },
-      ],
       quote: {
-        text: "Lantera made tracking my mother's blood pressure so much easier. I just speak the numbers and it's saved. The trends help me know when to call the doctor.",
-        author: "Siti Rahman",
+        text: "Lantera has made it easy for me to track my husband's blood sugar and blood pressure with an interface that is simple to use and understand. The voice input feature is a game-changer; I can just speak the numbers and they're saved instantly.",
+        author: "Jonathan's Mom",
         role: "Caregiver",
       },
     },
     gallery: [
-      "/portfolio-lantera.png",
-      "/portfolio-lantera.png",
+      "/lantera/lantera-1.jpg",
+      "/lantera/lantera-2.jpeg",
+      "/lantera/lantera-3.JPEG",
       "/portfolio-lantera.png",
       "/portfolio-lantera.png",
     ],
@@ -552,7 +555,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_hutrivia.png",
       "/portfolio_hutrivia.png",
     ],
-    nextProject: "lantera",
+    nextProject: "looca",
   },
   looca: {
     title: "LOOCA",
@@ -1039,11 +1042,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     ],
     impact: {
-      stats: [
-        { value: "1k+", label: "Questions Answered", color: "text-blue-600" },
-        { value: "100%", label: "Privacy Score", color: "text-blue-600" },
-        { value: "50+", label: "Articles", color: "text-blue-600" },
-      ],
+      stats: [],
       quote: {
         text: "This platform gave me the answers I was too afraid to ask anyone else. Thank you for making this.",
         author: "Anonymous",

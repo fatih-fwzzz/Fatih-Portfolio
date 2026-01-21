@@ -72,9 +72,9 @@ export interface ExtendedProjectData {
     logo: string;
     category: string;
   }[];
-  impact: {
-    stats: { value: string; label: string; color: string }[];
-    quote: { text: string; author: string; role: string };
+  impact?: {
+    stats?: { value: string; label: string; color: string }[];
+    quote?: { text: string; author: string; role: string };
   };
   gallery: string[];
   nextProject: string;
@@ -459,7 +459,7 @@ export default function ProjectDetailClient({
               variants={fadeInUp}
               className="text-4xl font-semibold mb-6"
             >
-              Built with modern tools
+              Built with reliable tools
             </motion.h3>
             <motion.p
               variants={fadeInUp}
@@ -493,62 +493,72 @@ export default function ProjectDetailClient({
       </section>
 
       {/* RESULTS SECTION */}
-      <section id="results-section" className="px-8 py-20">
-        <motion.div
-          className="max-w-5xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <div className="text-center mb-16">
-            <motion.h2
-              variants={fadeInUp}
-              className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
-            >
-              Impact & Results
-            </motion.h2>
-            <motion.h3
-              variants={fadeInUp}
-              className="text-4xl font-semibold mb-6"
-            >
-              Measurable success
-            </motion.h3>
-          </div>
-          <div className="grid md:grid-cols-3 gap-12 mb-16">
-            {project.impact.stats.map((stat, idx) => (
-              <motion.div key={idx} className="text-center" variants={fadeInUp}>
-                <p className={`text-5xl font-semibold ${stat.color} mb-3`}>
-                  {stat.value}
-                </p>
-                <p className="text-gray-600">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
+      {project.impact && (
+        <section id="results-section" className="px-8 py-20">
           <motion.div
-            className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-12 border border-blue-50"
-            variants={fadeInUp}
+            className="max-w-5xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
           >
-            <blockquote className="text-2xl font-light text-gray-800 leading-relaxed mb-6">
-              "{project.impact.quote.text}"
-            </blockquote>
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold mr-4 text-sm">
-                {project.impact.quote.author
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </div>
-              <div>
-                <p className="font-semibold">{project.impact.quote.author}</p>
-                <p className="text-sm text-gray-600">
-                  {project.impact.quote.role}
-                </p>
-              </div>
+            <div className="text-center mb-16">
+              <motion.h2
+                variants={fadeInUp}
+                className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"
+              >
+                Impact & Results
+              </motion.h2>
+              <motion.h3
+                variants={fadeInUp}
+                className="text-4xl font-semibold mb-6"
+              >
+                Measurable success
+              </motion.h3>
             </div>
+            {project.impact.stats && project.impact.stats.length > 0 && (
+              <div className="grid md:grid-cols-3 gap-12 mb-16">
+                {project.impact.stats.map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="text-center"
+                    variants={fadeInUp}
+                  >
+                    <p className={`text-5xl font-semibold ${stat.color} mb-3`}>
+                      {stat.value}
+                    </p>
+                    <p className="text-gray-600">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+            {project.impact.quote && (
+              <motion.div
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-12 border border-blue-50"
+                variants={fadeInUp}
+              >
+                <blockquote className="text-2xl font-light text-gray-800 leading-relaxed mb-6">
+                  "{project.impact.quote.text}"
+                </blockquote>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold mr-4 text-sm">
+                    {project.impact.quote.author
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <div>
+                    <p className="font-semibold">{project.impact.quote.author}</p>
+                    <p className="text-sm text-gray-600">
+                      {project.impact.quote.role}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
-        </motion.div>
-      </section>
+        </section>
+      )}
 
       {/* NEXT PROJECT SECTION */}
       {nextProjectData && (
