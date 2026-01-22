@@ -158,18 +158,20 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     description:
       "A complete rework of a legacy travel booking app, modernizing the codebase and optimizing the booking flow for better conversion rates.",
     role: "iOS Engineer",
-    timeline: "4 Months",
-    year: "2024",
+    timeline: "3 Weeks",
+    year: "2025",
     heroImage: "/portfolio-cococo.png",
     mainImage: "/portfolio-cococo.png",
     overview:
-      "Coco was a working travel app with a loyal user base, but the codebase was built with outdated patterns from iOS 10 era. The booking flow had a 40% drop-off rate. Our mission was to modernize the architecture while maintaining backward compatibility and dramatically improve the user experience.",
+      "Coco was a working travel app with a loyal user base, but the codebase was built with outdated patterns. The booking flow had a 40% drop-off rate. Our mission was to modernize the architecture while maintaining backward compatibility and dramatically improve the user experience.",
     challenge:
-      "The biggest challenge was refactoring a UIKit-based app with minimal documentation while users were actively using it. We had to modernize the code incrementally, introduce SwiftUI where possible, and migrate to modern networking patterns—all without breaking existing features.",
+      "The biggest challenge was refactoring a legacy UIKit codebase to adhere to the MVVM-C (Model-View-ViewModel-Coordinator) pattern while actively addressing critical booking conversion bottlenecks. We also championed a complete UI revamp to improve navigation and transparency—making pricing, policies, and trust elements like cancellation terms immediately visible to reassure users.",
     challengeBullets: [
-      "Refactoring legacy UIKit code without disrupting active users",
-      "Migrating from outdated networking to URLSession best practices",
-      "Implementing comprehensive unit tests for untested codebase",
+      "Refactoring legacy UIKit to MVVM-C architecture",
+      "Revamping UI/UX for transparency and user trust",
+      "Optimizing booking flow to boost conversion rates",
+      "Utilizing native URLSession for REST API integration",
+      "Enforcing 100% SwiftLint compliance",
     ],
     features: [
       {
@@ -222,25 +224,29 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         description:
           "Analyzed the existing codebase to identify technical debt hotspots. Mapped user flows to pinpoint conversion bottlenecks.",
         stats: [
-          { value: "15k", label: "Lines Audited" },
+          { value: "3k+", label: "Lines Audited" },
           { value: "40%", label: "Drop-off Rate" },
         ],
       },
       {
         step: 2,
-        title: "Incremental Refactoring",
+        title: "Strategic Core Refactoring",
         description:
-          "Refactored critical paths screen-by-screen, introducing SwiftUI views wrapped in UIHostingController. Migrated networking to async/await URLSession.",
+          "Executed a surgical modernization of the app's critical conversion funnel: Home, Search, Product Detail, and Booking. We rebuilt these high-impact flows from the ground up to eliminate friction and drive revenue, ensuring the most vital user journeys were flawless.",
         stats: [
-          { value: "20+", label: "Screens Rebuilt" },
+          { value: "4", label: "Critical Flows" },
           { value: "85%", label: "Test Coverage" },
         ],
       },
       {
         step: 3,
-        title: "A/B Testing & Launch",
+        title: "Validation & Launch",
         description:
-          "Deployed new booking flow to 20% of users via feature flags. Monitored conversion metrics and gradually rolled out to 100%.",
+          "Rigorous usability testing delivered definitive proof of success. The app achieved a flawless 100% task completion rate, with users citing the seamless booking flow and transparent pricing as key wins. Satisfaction scores averaged 4.8/5, cementing the redesign as a major upgrade.",
+        stats: [
+          { value: "100%", label: "Task Success" },
+          { value: "4.8/5", label: "User Satisfaction" },
+        ],
       },
     ],
     techStack: [
@@ -277,14 +283,18 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     ],
     impact: {
       stats: [
-        { value: "65%", label: "Conversion Rate", color: "text-green-600" },
-        { value: "50%", label: "Faster Load Times", color: "text-blue-600" },
-        { value: "85%", label: "Code Coverage", color: "text-purple-600" },
+        { value: "100%", label: "Task Success Rate", color: "text-green-600" },
+        { value: "5.0/5", label: "Cost Transparency", color: "text-blue-600" },
+        {
+          value: "4.8/5",
+          label: "Booking Satisfaction",
+          color: "text-purple-600",
+        },
       ],
       quote: {
-        text: "The new booking flow is so much smoother. I used to give up halfway through, but now it's just three taps and I'm done.",
-        author: "Made Wijaya",
-        role: "Beta Tester",
+        text: "Users find the app very clear and transparent about costs, fees, and refund policies. Completing the booking flow is very smooth and intuitive.",
+        author: "Usability Testing",
+        role: "Process & Results",
       },
     },
     gallery: [
