@@ -252,7 +252,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "UIKit",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/uikit.png",
         category: "UI Framework",
       },
       {
@@ -262,17 +262,17 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "SwiftUI",
-        logo: "https://cdn.simpleicons.org/swift/F05138",
+        logo: "https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png",
         category: "Modern UI",
       },
       {
         name: "URLSession",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/apple-api.png",
         category: "Networking",
       },
       {
         name: "XCTest",
-        logo: "https://cdn.simpleicons.org/apple/000000",
+        logo: "/logo/xctest.png",
         category: "Testing",
       },
       {
@@ -298,9 +298,9 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/portfolio-cococo.png",
-      "/portfolio-cococo.png",
-      "/portfolio-cococo.png",
+      "/cococo/cococo-1.JPG",
+      "/cococo/cococo-2.JPG",
+      "/cococo/cococo-3.JPEG",
       "/portfolio-cococo.png",
     ],
     nextProject: "legend-of-gardatara",
