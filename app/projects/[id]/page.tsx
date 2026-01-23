@@ -311,18 +311,18 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     description:
       "A 2D horizontal-lane tower defense game combining Indonesian folklore heroes with strategic gameplay to battle alien invaders.",
     role: "Game Developer",
-    timeline: "8 Months",
-    year: "2024",
+    timeline: "1 Month",
+    year: "2025",
     heroImage: "/portfolio_log.png",
     mainImage: "/portfolio_log.png",
     overview:
-      "Legend of Gardatara was born from a passion to showcase Indonesian cultural heritage through gaming. We wanted to create a tower defense game that's not just fun, but also introduces global players to iconic Indonesian folklore characters like Gatotkaca, Srikandi, and Hanoman in an exciting sci-fi setting.",
+      "Legend of Gardatara was born from a passion to showcase Indonesian cultural heritage through gaming. We wanted to create a tower defense game that's not just fun, but also introduces global players to iconic Indonesian folklore characters like Si Kancil, Bawang Merah & Bawang Putih, and Malin Kundang in an exciting sci-fi setting.",
     challenge:
-      "The core challenge was balancing authentic cultural representation with engaging gameplay mechanics. We also had to optimize Unity performance for smooth 60fps gameplay on older iPhone models while managing memory constraints from sprite animations and particle effects.",
+      "The core challenge was balancing authentic cultural representation with engaging gameplay mechanics. We also prioritized stability to ensure the game runs without crashing and engineered a fully responsive resolution system compatible with all iPhone and iPad models.",
     challengeBullets: [
       "Researching and authentically representing Indonesian folklore heroes",
-      "Optimizing Unity 2D for 60fps on older iPhone models",
-      "Balancing strategic depth with accessible gameplay",
+      "Ensuring crash-free stability via memory optimization",
+      "Implementing adaptive resolution for universal iPhone & iPad support",
     ],
     features: [
       {
@@ -333,11 +333,11 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         desc: "Plan hero placement in horizontal lanes.",
       },
       {
-        icon: "fa-users",
+        icon: "fa-rocket",
         colorBg: "bg-purple-100",
         colorText: "text-purple-600",
-        title: "Folklore Heroes",
-        desc: "10+ unique Indonesian legendary characters.",
+        title: "Folklore x Alien",
+        desc: "A unique fusion where traditional Indonesian culture clashes with futuristic alien invaders.",
       },
       {
         icon: "fa-wand-magic-sparkles",
@@ -347,25 +347,11 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         desc: "Each hero has unique powers based on their legend.",
       },
       {
-        icon: "fa-gamepad",
-        colorBg: "bg-red-100",
-        colorText: "text-red-600",
-        title: "Campaign Mode",
-        desc: "30 levels of increasing difficulty.",
-      },
-      {
-        icon: "fa-trophy",
-        colorBg: "bg-green-100",
-        colorText: "text-green-600",
-        title: "Leaderboards",
-        desc: "Global rankings via Game Center.",
-      },
-      {
         icon: "fa-palette",
         colorBg: "bg-orange-100",
         colorText: "text-orange-600",
         title: "Hand-Drawn Art",
-        desc: "Unique art style blending traditional and modern.",
+        desc: "Unique art style blending traditional, adorable, and modern."
       },
     ],
     process: [
@@ -375,18 +361,18 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         description:
           "Studied Indonesian folklore texts and consulted cultural experts to ensure respectful and accurate representation of each hero. Created concept art blending traditional wayang aesthetics with modern game design.",
         stats: [
-          { value: "20+", label: "Folklore Sources" },
-          { value: "10", label: "Hero Designs" },
+          { value: "10+", label: "Tower Defense game resources" },
+          { value: "10", label: "Animated Objects" },
         ],
       },
       {
         step: 2,
         title: "Unity Development",
         description:
-          "Built the core tower defense mechanics in Unity 2D using C#. Implemented lane-based movement, hero ability systems, and enemy AI. Optimized sprite atlases and object pooling for performance.",
+          "Engineered the game's core architecture with a strict focus on memory stability to prevent crashes on older hardware. Implemented a custom adaptive resolution system to ensure perfectly scaled UI and gameplay across the entire range of iPhones and iPads.",
         stats: [
-          { value: "60", label: "FPS Target" },
-          { value: "30", label: "Levels Built" },
+          { value: "100%", label: "Crash-Free" },
+          { value: "Universal", label: "Device Support" },
         ],
       },
       {
@@ -404,7 +390,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "C#",
-        logo: "https://cdn.simpleicons.org/csharp/239120",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg",
         category: "Language",
       },
       {
@@ -413,27 +399,27 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         category: "Services",
       },
       {
-        name: "Illustrator",
-        logo: "https://cdn.simpleicons.org/adobeillustrator/FF9A00",
-        category: "Art Tool",
+        name: "Xcode",
+        logo: "https://developer.apple.com/assets/elements/icons/xcode-s/xcode-s-256x256_2x.png",
+        category: "Build & Profile",
       },
     ],
     impact: {
       stats: [
-        { value: "5k+", label: "Downloads", color: "text-blue-600" },
-        { value: "4.7", label: "App Store Rating", color: "text-green-600" },
-        { value: "10+", label: "Folklore Heroes", color: "text-purple-600" },
+        { value: "800+", label: "App Store Impressions", color: "text-blue-600" },
+        { value: "5.0", label: "App Store Rating", color: "text-green-600" },
+        { value: "100%", label: "Crash-Free", color: "text-purple-600" },
       ],
       quote: {
-        text: "I never knew about Gatotkaca before this game. Now I'm reading more about Indonesian mythology. This is education through fun!",
-        author: "Alex Chen",
-        role: "Player from Singapore",
+        text: "It is really engaging and fun to play. It is suitable for the Global Market, and the characters are so adorable!",
+        author: "Restya Winda Astari",
+        role: "Team Lead at Agate Academy",
       },
     },
     gallery: [
-      "/portfolio_log.png",
-      "/portfolio_log.png",
-      "/portfolio_log.png",
+      "/log/log-1.JPG",
+      "/log/log-2.JPEG",
+      "/log/log-3.JPEG",
       "/portfolio_log.png",
     ],
     nextProject: "leafit",
