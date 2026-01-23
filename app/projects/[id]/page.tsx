@@ -441,10 +441,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     overview:
       "Hutrivia was born from a desire to make history education accessible and fun. We noticed that traditional learning methods often failed to engage younger audiences, so we set out to create an experience that combines education with the addictive nature of social gaming.",
     challenge:
-      "The primary challenge was to balance educational integrity with entertainment value. We needed a system that was robust enough to handle real-time multiplayer requests while keeping the user interface playful and intuitive.",
+      "The primary challenge was to balance educational integrity with entertainment value. We also prioritized ensuring the user interface was fully responsive, maintaining a playful and intuitive experience across both Android and iPhone devices.",
     challengeBullets: [
       "Gamify historical content without trivializing it",
-      "Ensure real-time leaderboard synchronization",
+      "Ensuring consistent UI behavior on iOS & Android",
       "Optimize performance for low-end devices",
     ],
     features: [
@@ -452,43 +452,43 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         icon: "fa-gamepad",
         colorBg: "bg-blue-100",
         colorText: "text-blue-600",
-        title: "Interactive Gameplay",
-        desc: "Fast-paced trivia rounds that keep users on their toes.",
+        title: "Trivia Engine",
+        desc: "Engaging quiz logic with varied question types.",
       },
       {
-        icon: "fa-trophy",
-        colorBg: "bg-yellow-100",
-        colorText: "text-yellow-600",
-        title: "Real-time Rankings",
-        desc: "Live leaderboards to foster friendly competition.",
-      },
-      {
-        icon: "fa-medal",
-        colorBg: "bg-red-100",
-        colorText: "text-red-600",
-        title: "Achievement System",
-        desc: "Unlockable badges for knowledge milestones.",
-      },
-      {
-        icon: "fa-users",
+        icon: "fa-cloud-arrow-down",
         colorBg: "bg-purple-100",
         colorText: "text-purple-600",
-        title: "Social Sharing",
-        desc: "Seamless sharing of scores to social media platforms.",
+        title: "Dynamic Content",
+        desc: "Questions update remotely via Firebase.",
+      },
+      {
+        icon: "fa-bolt",
+        colorBg: "bg-yellow-100",
+        colorText: "text-yellow-600",
+        title: "Instant Scoring",
+        desc: "Immediate feedback and result calculation.",
+      },
+      {
+        icon: "fa-layer-group",
+        colorBg: "bg-red-100",
+        colorText: "text-red-600",
+        title: "Topic Variety",
+        desc: "Covers multiple eras of Indonesian history.",
       },
       {
         icon: "fa-mobile",
         colorBg: "bg-green-100",
         colorText: "text-green-600",
         title: "Cross-Platform",
-        desc: "Native performance on both iOS and Android.",
+        desc: "Seamless experience on both iOS and Android.",
       },
       {
-        icon: "fa-chart-pie",
-        colorBg: "bg-orange-100",
-        colorText: "text-orange-600",
-        title: "User Analytics",
-        desc: "Track progress and identify weak knowledge areas.",
+        icon: "fa-shield-halved",
+        colorBg: "bg-gray-100",
+        colorText: "text-gray-600",
+        title: "Firebase Auth",
+        desc: "Secure user session management.",
       },
     ],
     process: [
@@ -496,11 +496,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         step: 1,
         title: "Research & Concept",
         description:
-          "We analyzed top quiz apps to understand engagement loops. User interviews revealed that 'bragging rights' were a key motivator.",
-        stats: [
-          { value: "50+", label: "Apps Analyzed" },
-          { value: "100+", label: "User Surveys" },
-        ],
+          "We analyzed top quiz apps to understand engagement loops.",
       },
       {
         step: 2,
@@ -537,18 +533,6 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
         category: "Design Tool",
       },
     ],
-    impact: {
-      stats: [
-        { value: "10k+", label: "Downloads", color: "text-blue-600" },
-        { value: "4.8", label: "App Store Rating", color: "text-blue-600" },
-        { value: "500k", label: "Quizzes Taken", color: "text-blue-600" },
-      ],
-      quote: {
-        text: "Hutrivia made learning about our independence day actually fun. I compete with my friends every year now!",
-        author: "Budi Santoso",
-        role: "Early User",
-      },
-    },
     gallery: [
       "/portfolio_hutrivia.png",
       "/portfolio_hutrivia.png",
