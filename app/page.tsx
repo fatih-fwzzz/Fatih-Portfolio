@@ -174,7 +174,7 @@ const PROJECTS = [
       "Indoor navigation app designed to help users find their way to food courts in large building complexes using ARKit and CoreLocation. Works offline in basements/parking areas.",
     techStack: ["Swift", "SwiftUI", "ARKit", "CoreLocation"],
     visualType: "image",
-    image: "/portfolio_looca.png",
+    image: "/portfolio_looca-2.png",
     github: "https://github.com/fatih-fwzzz/Looca.git",
   },
   {
@@ -185,7 +185,7 @@ const PROJECTS = [
       "Streamlined navigation app for Apple Watch. Guides users with a simple arrow and real-time distance updates using CoreLocation. Perfect for short-range indoor navigation.",
     techStack: ["Swift", "SwiftUI", "CoreLocation"],
     visualType: "image",
-    image: "/portfolio_looca_watch.png",
+    image: "/portfolio_looca-watch-2.png",
     github: "https://github.com/fatih-fwzzz/LoocaWatchOS.git",
   },
   {
