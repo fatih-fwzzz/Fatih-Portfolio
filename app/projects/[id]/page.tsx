@@ -555,7 +555,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_hutrivia.png",
       "/portfolio_hutrivia.png",
     ],
-    nextProject: "looca",
+    nextProject: "kenali-diri",
   },
   looca: {
     title: "LOOCA",
@@ -809,7 +809,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_looca_watch.png",
       "/portfolio_looca_watch.png",
     ],
-    nextProject: "leafit",
+    nextProject: "hutrivia",
   },
   leafit: {
     title: "LeaFit",
@@ -943,7 +943,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/leafit/leafit-3.JPEG",
       "/portfolio_leafit.png",
     ],
-    nextProject: "kenali-diri",
+    nextProject: "looca",
   },
   "kenali-diri": {
     title: "Kenali-Diri",
@@ -1064,7 +1064,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_kenali_diri.png",
       "/portfolio_kenali_diri.png",
     ],
-    nextProject: "looca",
+    nextProject: "pahamikulit",
   },
   pahamikulit: {
     title: "PahamiKulit",
@@ -1189,7 +1189,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       "/portfolio_pahamikulit.png",
       "/portfolio_pahamikulit.png",
     ],
-    nextProject: "hutrivia",
+    nextProject: "lantera",
   },
 };
 
