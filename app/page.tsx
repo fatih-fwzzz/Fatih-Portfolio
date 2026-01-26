@@ -196,7 +196,7 @@ const PROJECTS = [
       "An engaging quiz app that celebrates the spirit of Indonesian independence through fun and educational trivia. Built with Flutter and powered by Firebase.",
     techStack: ["Flutter", "Firebase"],
     visualType: "image",
-    image: "/portfolio_hutrivia.png",
+    image: "/portfolio_hutrivia-2.png",
     github: "https://github.com/fatih-fwzzz/HUTRIVIA.git",
   },
   {
@@ -207,7 +207,7 @@ const PROJECTS = [
       "Gamified educational platform for sex education for Indonesian students. Undergraduate thesis project focusing on improving sexual health awareness.",
     techStack: ["Next.js", ".NET Core", "C#", "Azure", "MSSQL"],
     visualType: "image",
-    image: "/portfolio_kenali_diri.png",
+    image: "/portfolio_kenali-diri.png",
     github: "https://github.com/Kenali-Diri",
   },
   {
