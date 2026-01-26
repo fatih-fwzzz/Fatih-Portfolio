@@ -514,22 +514,22 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "Flutter",
-        logo: "https://cdn.simpleicons.org/flutter/02569B",
+        logo: "/logo/flutter.svg",
         category: "Mobile Framework",
       },
       {
         name: "Firebase",
-        logo: "https://cdn.simpleicons.org/firebase/FFCA28",
+        logo: "/logo/firebase.svg",
         category: "Backend Service",
       },
       {
         name: "Dart",
-        logo: "https://cdn.simpleicons.org/dart/0175C2",
+        logo: "/logo/dart.svg",
         category: "Language",
       },
       {
         name: "Figma",
-        logo: "https://cdn.simpleicons.org/figma/F24E1E",
+        logo: "https://cdn.simpleicons.org/figma/000000",
         category: "Design Tool",
       },
     ],

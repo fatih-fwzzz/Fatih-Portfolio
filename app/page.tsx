@@ -226,27 +226,14 @@ const PROJECTS = [
 const EXPERIENCE_DATA = {
   foundation: [
     {
-      title: "Master of Science in Computer Science",
-      school: "Stanford University",
-      period: "2022 - 2024",
+      title: "Bachelor of Science in Computer Science",
+      school: "Bina Nusantara University",
+      period: "2021 - 2025",
       description:
-        "Advanced coursework in distributed systems, AI/ML, and computer vision. Thesis on efficient scaling of large language models.",
-      tags: ["Distributed Systems", "Machine Learning", "Algorithms"],
+        "Graduated with Honors. specialized in Software Engineering. Built projects across mobile, web, and backend platforms.",
+      tags: ["Software Engineering"],
       icon: "fa-graduation-cap",
       color: "bg-blue-100 text-blue-600",
-      images: [
-        "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-      ],
-    },
-    {
-      title: "Bachelor of Science in Computer Science",
-      school: "University of California, Berkeley",
-      period: "2018 - 2022",
-      description:
-        "Graduated with Honors. specialized in Software Engineering. Lead Developer for the campus autonomous vehicle team.",
-      tags: ["Software Engineering", "Operating Systems", "Data Structures"],
-      icon: "fa-graduation-cap",
-      color: "bg-green-100 text-green-600",
       images: [
         "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
         "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
@@ -649,9 +636,6 @@ export default function Portfolio() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <div className="mb-12">
-                <h3 className="text-sm font-medium text-gray-500 mb-4 tracking-wide">
-                  MOMENTS & INTERESTS
-                </h3>
                 <div className="relative w-full h-[400px] flex items-center justify-center">
                   {[
                     {
