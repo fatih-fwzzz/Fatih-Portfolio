@@ -213,12 +213,12 @@ const PROJECTS = [
   {
     id: "pahamikulit",
     title: "PahamiKulit",
-    category: "AI / WEB",
+    category: "WEB PLATFORM",
     description:
-      "Personalized skincare recommendation platform using Simple Additive Weighting (SAW) algorithm to suggest products based on skin type and concerns.",
-    techStack: ["Next.js", "Flask", "Python", "MySQL"],
+      "Interactive skincare education platform proven to significantly increase user knowledge. Features ingredient conflict safety checks and mix-and-match simulation.",
+    techStack: ["React", "Node.js", "MySQL"],
     visualType: "image",
-    image: "/portfolio_pahamikulit.png",
+    image: "/portfolio_pahami-kulit.png",
     github: "https://github.com/Basic-Dulu",
   },
 ];
