@@ -148,7 +148,7 @@ const PROJECTS = [
     category: "IOS GAME APP",
     description:
       "2D horizontal-lane tower defense strategic game where players team up with iconic Indonesian folklore heroes to battle alien invaders. It’s not only fun strategy gameplay & winning battles, it’s also introducing Indonesian folklore heroes to the global stage.",
-    techStack: ["Unity 2D"],
+    techStack: ["C#", "Unity 2D"],
     visualType: "image",
     image: "/portfolio_log.png",
     appStore:
@@ -216,7 +216,7 @@ const PROJECTS = [
     category: "WEB PLATFORM",
     description:
       "Interactive skincare education platform proven to significantly increase user knowledge. Features ingredient conflict safety checks and mix-and-match simulation.",
-    techStack: ["React", "Node.js", "MySQL"],
+    techStack: ["Next.js", "Javascript","Flask", "Python", "MySQL"],
     visualType: "image",
     image: "/portfolio_pahami-kulit.png",
     github: "https://github.com/Basic-Dulu",
@@ -630,18 +630,20 @@ export default function Portfolio() {
               </h2>
               <div className="space-y-6 text-xl text-gray-600 leading-relaxed">
                 <p>
-                  I'm a passionate developer with expertise in both web and
-                  mobile technologies. I love creating seamless user experiences
+                  I'm a passionate developer with expertise in both mobile and
+                  web technologies. I love creating seamless user experiences
                   and robust backend systems.
                 </p>
                 <p>
                   My journey started at BINUS University and has led me to work
                   with global companies like IDEMIA and the Apple Developer
-                  Academy.
+                  Academy. Beyond coding, I love networking and organizing
+                  with people to build meaningful connections.
                 </p>
                 <p>
-                  I believe in writing clean, maintainable code and following
-                  best practices. Always learning, always building.
+                  I love building apps that solve real-world problems. I believe
+                  in writing clean, maintainable code and following best
+                  practices to create reliable solutions. Always learning, always building.
                 </p>
               </div>
             </motion.div>
@@ -653,32 +655,32 @@ export default function Portfolio() {
                 <div className="relative w-full h-[400px] flex items-center justify-center">
                   {[
                     {
-                      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
-                      label: "Coding",
+                      src: "/about-me/about-me-4.jpg",
+                      label: "",
                       rotate: "-6deg",
                       top: "10%",
                       left: "5%",
                       zIndex: 1,
                     },
                     {
-                      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
-                      label: "Tech",
+                      src: "/about-me/about-me-2.jpg",
+                      label: "",
                       rotate: "12deg",
                       top: "20%",
                       right: "5%",
                       zIndex: 2,
                     },
                     {
-                      src: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&h=300&fit=crop",
-                      label: "Music",
+                      src: "/about-me/about-me-3.jpg",
+                      label: "",
                       rotate: "-12deg",
                       bottom: "10%",
                       left: "15%",
                       zIndex: 3,
                     },
                     {
-                      src: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&h=300&fit=crop",
-                      label: "Travel",
+                      src: "/about-me/about-me-1.jpg",
+                      label: "",
                       rotate: "8deg",
                       bottom: "5%",
                       right: "15%",

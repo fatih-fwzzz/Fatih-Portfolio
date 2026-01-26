@@ -1056,7 +1056,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
   },
   pahamikulit: {
     title: "PahamiKulit",
-    category: "Interactive Web",
+    category: "Web platform",
     description:
       "An interactive educational platform designed to guide adolescents in understanding basic skincare, backed by a proven significant increase in user knowledge.",
     role: "Full Stack Developer",
@@ -1176,9 +1176,9 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/portfolio_pahamikulit.png",
-      "/portfolio_pahamikulit.png",
-      "/portfolio_pahamikulit.png",
+      "/pahami-kulit/pahami-kulit-1.jpg",
+      "/pahami-kulit/pahami-kulit-2.jpg",
+      "/pahami-kulit/pahami-kulit-3.jpg",
       "/portfolio_pahamikulit.png",
     ],
     nextProject: "lantera",
