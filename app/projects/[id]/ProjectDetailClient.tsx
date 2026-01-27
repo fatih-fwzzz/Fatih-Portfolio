@@ -102,7 +102,11 @@ export default function ProjectDetailClient({
               href="/"
               className="text-xl font-semibold tracking-tight flex items-center group"
             >
-              <i className="fa-solid fa-code mr-2 text-blue-600 group-hover:rotate-12 transition-transform"></i>
+              <img
+                src="/web-logo.png"
+                alt="Logo"
+                className="w-8 h-8 mr-3 object-contain group-hover:rotate-12 transition-transform"
+              />
               Fatih
             </Link>
             <div className="hidden md:flex items-center space-x-10">
