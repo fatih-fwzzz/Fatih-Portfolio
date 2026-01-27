@@ -144,7 +144,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/lantera/lantera-1.jpg",
+      "/lantera/lantera-1.JPG",
       "/lantera/lantera-2.jpeg",
       "/lantera/lantera-3.JPEG",
       "/portfolio-lantera.png",
