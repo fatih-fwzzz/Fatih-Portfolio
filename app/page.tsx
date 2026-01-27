@@ -47,10 +47,10 @@ const PERSONAL_INFO = {
   role: "Software Engineer",
   roles: [
     {
-      title: "Front End Developer",
-      icon: "fa-code",
-      colorClass: "text-blue-600",
-      bgClass: "bg-blue-50",
+      title: "Mobile Developer",
+      icon: "fa-mobile-screen",
+      colorClass: "text-purple-600",
+      bgClass: "bg-purple-50",
     },
     {
       title: "Back End Developer",
@@ -59,10 +59,16 @@ const PERSONAL_INFO = {
       bgClass: "bg-green-50",
     },
     {
-      title: "Mobile Developer",
-      icon: "fa-mobile-screen",
-      colorClass: "text-purple-600",
-      bgClass: "bg-purple-50",
+      title: "Front End Developer",
+      icon: "fa-code",
+      colorClass: "text-blue-600",
+      bgClass: "bg-blue-50",
+    },
+    {
+      title: "QA Automation",
+      icon: "fa-robot",
+      colorClass: "text-cyan-600",
+      bgClass: "bg-cyan-50",
     },
     {
       title: "DevOps",
@@ -76,25 +82,17 @@ const PERSONAL_INFO = {
       colorClass: "text-pink-600",
       bgClass: "bg-pink-50",
     },
-    {
-      title: "QA Automation",
-      icon: "fa-robot",
-      colorClass: "text-cyan-600",
-      bgClass: "bg-cyan-50",
-    },
   ],
   heroTitle: "Crafting digital experiences through code",
   heroSubtitle:
-    "Passionate about creating seamless user experiences and robust, scalable solutions across web, mobile, and cloud platforms.",
+    "Passionate about creating seamless user experiences and robust, scalable solutions across mobile and web platforms.",
   avatarUrl:
     "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg",
   localAvatar: "/pass-foto-1.png",
   socials: {
     github: "https://github.com/fatih-fwzzz",
-    linkedin: "#",
-    stackoverflow: "#",
-    twitter: "#",
-    email: "mailto:hello@portfolio.com",
+    linkedin: "https://www.linkedin.com/in/fatih-daffa-fawwaz-5a28a123b/",
+    email: "mailto:m.fatihdaffa@gmail.com",
   },
 };
 
@@ -235,65 +233,61 @@ const EXPERIENCE_DATA = {
       icon: "fa-graduation-cap",
       color: "bg-blue-100 text-blue-600",
       images: [
-        "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+        "/about-me/about-me-3.jpg"
       ],
     },
   ],
   work: [
     {
-      title: "Senior Software Engineer",
-      company: "Tech Corp",
-      location: "San Francisco, CA",
-      period: "2024 - Present",
-      type: "Full-time",
-      bullets: [
-        "Architected and deployed a new microservices framework reducing latency by 40%.",
-        "Led a team of 5 engineers to deliver critical features for the Q4 product launch.",
-        "Implemented automated CI/CD pipelines increasing deployment frequency by 3x.",
-      ],
+      title: "iOS Developer",
+      company: "Apple Developer Academy",
+      location: "Tangerang, Indonesia",
+      period: "2025",
+      type: "Internship",
+      description:
+        "Selected as one of the Apple Developer Academy participants from over 13,000 applicants (with an acceptance rate of less than 1.60%), I am currently engaged in an intensive program that focuses on app development, business, and innovation within the Apple ecosystem. As part of a diverse team, I collaborate to build impactful, user-centric applications using Swift, Xcode, and Apple’s Human Interface Guidelines.",
       images: [
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+        "/about-me/about-me-1.jpg"
       ],
-      icon: "fa-building",
-      color: "bg-purple-100 text-purple-600",
+      icon: "fa-brands fa-apple",
+      color: "bg-gray-100 text-gray-900",
     },
     {
       title: "Software Engineer Intern",
-      company: "StartUp Inc",
-      location: "Remote",
-      period: "Summer 2023",
+      company: "IDEMIA",
+      location: "Jakarta, Indonesia",
+      period: "2024",
       type: "Internship",
       bullets: [
-        "Developed a real-time analytics dashboard using React and D3.js.",
-        "Optimized database queries for 50% faster data retrieval.",
-        "Collaborated with product designers to improve user onboarding flow.",
+        "JIRA Integration: Developed Power BI service automating KPI retrieval, cutting reporting time by 60% for 20+ members.",
+        "Task Automation: Deployed JIRA Reminder microservice with automated alerts, reducing overdue tasks by 35%.",
+        "Migration Tool: Built automation for Bank Card Personalization (SilkTest to C# .NET), boosting reliability by 40%.",
+        "DevOps: Optimized Jenkins pipelines and integrated performance metrics into Kibana/Elasticsearch dashboards.",
       ],
       images: [
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+        "/about-me/about-me-2.jpg"
       ],
       icon: "fa-code",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-purple-100 text-purple-600",
     },
   ],
   leadership: [
     {
-      role: "Google Developer Club Lead",
-      org: "University Chapter",
-      period: "2021 - 2022",
+      role: "General Manager of Education Commission",
+      org: "HIMTI BINUS University",
+      period: "2023 - 2024",
       description:
-        "Organized monthly workshops on cloud computing and web development for 100+ students.",
+        "Led the Educational Commission of Himpunan Teknik Informatika (HIMTI) BINUS University in supporting School of Computer Science initiatives and built partnerships with multiple industry companies to deliver seminars, workshops, and company visits for student development.",
       icon: "fa-users",
-      color: "bg-red-100 text-red-600",
+      color: "bg-blue-100 text-blue-600",
     },
     {
-      role: "Hackathon Organizer",
-      org: "HackMIT",
-      period: "2020 - 2021",
+      role: "Registration Committee",
+      org: "International Collegiate Programming Contest",
+      period: "2023",
       description:
-        "Managed logistics and sponsorships for a 24-hour hackathon with over 500 participants.",
-      icon: "fa-calendar-check",
+        "Managed global registration logistics for the International Collegiate Programming Contest (ICPC), ensuring seamless onboarding for hundreds of elite competitive programmers worldwide.",
+      icon: "fa-globe",
       color: "bg-yellow-100 text-yellow-600",
     },
   ],
@@ -848,12 +842,12 @@ export default function Portfolio() {
                           {edu.images.map((img, iIdx) => (
                             <div
                               key={iIdx}
-                              className="relative h-48 rounded-xl overflow-hidden group-hover:opacity-90 transition-opacity bg-gray-100"
+                              className="relative max-h-48 hover:max-h-[600px] transition-[max-height] duration-700 ease-in-out overflow-hidden rounded-xl bg-gray-100 group"
                             >
                               <img
                                 src={img}
                                 alt={`${edu.school} photo ${iIdx + 1}`}
-                                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                                className="w-full h-auto object-top object-cover"
                               />
                             </div>
                           ))}
@@ -897,7 +891,11 @@ export default function Portfolio() {
                       <div
                         className={`w-14 h-14 rounded-2xl ${job.color} flex items-center justify-center flex-shrink-0`}
                       >
-                        <i className={`fa-solid ${job.icon} text-2xl`}></i>
+                        <i
+                          className={`${
+                            job.icon.startsWith("fa-brands") ? "" : "fa-solid"
+                          } ${job.icon} text-2xl`}
+                        ></i>
                       </div>
                       <div className="flex-1">
                         <div className="flex flex-col md:flex-row md:justify-between mb-1">
@@ -914,29 +912,37 @@ export default function Portfolio() {
                           <span>{job.location}</span>
                         </div>
 
-                        <ul className="space-y-3 mb-8">
-                          {job.bullets.map((bullet, bIdx) => (
-                            <li
-                              key={bIdx}
-                              className="flex items-start text-gray-600 leading-relaxed"
-                            >
-                              <i className="fa-solid fa-check text-green-500 mt-1.5 mr-3 text-xs"></i>
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        {job.description && (
+                          <p className="text-gray-600 mb-4 leading-relaxed">
+                            {job.description}
+                          </p>
+                        )}
+
+                        {job.bullets && job.bullets.length > 0 && (
+                          <ul className="space-y-3 mb-8">
+                            {job.bullets.map((bullet, bIdx) => (
+                              <li
+                                key={bIdx}
+                                className="flex items-start text-gray-600 leading-relaxed"
+                              >
+                                <i className="fa-solid fa-check text-green-500 mt-1.5 mr-3 text-xs"></i>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
 
                         {job.images && job.images.length > 0 && (
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                             {job.images.map((img, iIdx) => (
                               <div
                                 key={iIdx}
-                                className="relative h-48 rounded-xl overflow-hidden group-hover:opacity-90 transition-opacity bg-gray-100"
+                                className="relative max-h-48 hover:max-h-[600px] transition-[max-height] duration-700 ease-in-out overflow-hidden rounded-xl bg-gray-100 group"
                               >
                                 <img
                                   src={img}
                                   alt={`${job.company} work ${iIdx + 1}`}
-                                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                                  className="w-full h-auto object-top object-cover"
                                 />
                               </div>
                             ))}
@@ -1026,7 +1032,7 @@ export default function Portfolio() {
               Get in touch
             </a>
             <a
-              href="#"
+              href="https://bit.ly/49zR1zM"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all hover:shadow-lg hover:-translate-y-1"
             >
               <i className="fa-solid fa-file-arrow-down mr-2"></i>
@@ -1058,22 +1064,8 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500">
-              © 2024 Portfolio. All rights reserved.
+              © 2025 Fatih Fawwaz. All rights reserved.
             </p>
-            <div className="flex space-x-8">
-              <a
-                href="#"
-                className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </footer>

@@ -548,7 +548,9 @@ export default function ProjectDetailClient({
                       .join("")}
                   </div>
                   <div>
-                    <p className="font-semibold">{project.impact.quote.author}</p>
+                    <p className="font-semibold">
+                      {project.impact.quote.author}
+                    </p>
                     <p className="text-sm text-gray-600">
                       {project.impact.quote.role}
                     </p>
@@ -629,19 +631,13 @@ export default function ProjectDetailClient({
             </div>
             <div className="flex items-center space-x-6">
               <a
-                href="#"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <i className="fa-brands fa-twitter text-xl"></i>
-              </a>
-              <a
-                href="#"
+                href="https://www.linkedin.com/in/fatih-daffa-fawwaz-5a28a123b/"
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <i className="fa-brands fa-linkedin text-xl"></i>
               </a>
               <a
-                href="mailto:hello@fatih.dev"
+                href="mailto:m.fatihdaffa@gmail.com"
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <i className="fa-solid fa-envelope text-xl"></i>
@@ -656,7 +652,7 @@ export default function ProjectDetailClient({
           </div>
           <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500">
-              © 2024 Fatih Fawwaz. All rights reserved.
+              © 2025 Fatih Fawwaz. All rights reserved.
             </p>
           </div>
         </div>

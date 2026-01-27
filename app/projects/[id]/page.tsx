@@ -549,8 +549,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "iOS Developer",
     timeline: "4 Months",
     year: "2024",
-    heroImage: "/portfolio_looca.png",
-    mainImage: "/portfolio_looca.png",
+    heroImage: "/portfolio_looca-2.png",
+    mainImage: "/portfolio_looca-2.png",
     overview:
       "GPS fails indoors. LOOCA bridges that gap. We built a solution that uses visual markers and internal sensors to provide pinpoint accuracy inside shopping malls and office complexes, all without needing expensive beacon infrastructure.",
     challenge:
@@ -674,8 +674,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Lead iOS Developer",
     timeline: "2 Weeks",
     year: "2025",
-    heroImage: "/portfolio_looca_watch.png",
-    mainImage: "/portfolio_looca_watch.png",
+    heroImage: "/portfolio_looca-watch-2.png",
+    mainImage: "/portfolio_looca-watch-2.png",
     overview:
       "Glancing at a phone while walking can be dangerous. We extended the LOOCA experience to the wrist, providing subtle haptic feedback and simple directional arrows so users can navigate heads-up.",
     challenge:
@@ -1062,8 +1062,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Full Stack Developer",
     timeline: "6 Months",
     year: "2025",
-    heroImage: "/portfolio_pahamikulit.png",
-    mainImage: "/portfolio_pahamikulit.png",
+    heroImage: "/portfolio_pahami-kulit.png",
+    mainImage: "/portfolio_pahami-kulit.png",
     overview:
       "Adolescents constantly explore skincare due to puberty and social media influence, but misinformation often leads to damaged skin barriers. PahamiKulit solves this by providing a scientifically-grounded, interactive guide. It helps users identify their skin type and select safe 'basic skincare' routines (Cleanser, Moisturizer, Protector) without the marketing fluff.",
     challenge:
