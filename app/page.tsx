@@ -233,7 +233,7 @@ const EXPERIENCE_DATA = {
       icon: "fa-graduation-cap",
       color: "bg-blue-100 text-blue-600",
       images: [
-        "/about-me/about-me-3.jpg"
+        "/about-me/about-me-3.JPG"
       ],
     },
   ],
@@ -653,7 +653,7 @@ export default function Portfolio() {
                       zIndex: 2,
                     },
                     {
-                      src: "/about-me/about-me-3.jpg",
+                      src: "/about-me/about-me-3.JPG",
                       label: "",
                       rotate: "-12deg",
                       bottom: "10%",
