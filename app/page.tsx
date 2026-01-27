@@ -294,12 +294,12 @@ const EXPERIENCE_DATA = {
 };
 
 const SKILLS = [
-  { name: "React/Next.js", level: 75, color: "bg-blue-600" },
-  { name: ".NET Core", level: 90, color: "bg-purple-600" },
-  { name: "iOS/Android", level: 65, color: "bg-green-600" },
-  { name: "Python", level: 80, color: "bg-orange-600" },
-  { name: "MySQL", level: 85, color: "bg-cyan-600" },
-  { name: "TypeScript", level: 85, color: "bg-blue-500" },
+  { name: "iOS Development", level: 95, color: "bg-gray-900" },
+  { name: "Backend (.NET/Go)", level: 90, color: "bg-purple-600" },
+  { name: "Mobile (Flutter/Android)", level: 85, color: "bg-blue-600" },
+  { name: "Database & Cloud", level: 85, color: "bg-cyan-600" },
+  { name: "CI/CD & Testing", level: 80, color: "bg-green-600" },
+  { name: "Web Development", level: 75, color: "bg-orange-600" },
 ];
 
 const TECHNOLOGIES = [
@@ -354,7 +354,11 @@ export default function Portfolio() {
               href="#"
               className="text-xl font-semibold tracking-tight flex items-center group"
             >
-              <i className="fa-solid fa-code mr-2 text-blue-600 group-hover:rotate-12 transition-transform"></i>
+              <img
+                src="/web-logo.png"
+                alt="Logo"
+                className="w-8 h-8 mr-3 object-contain group-hover:rotate-12 transition-transform"
+              />
               {PERSONAL_INFO.name}
             </a>
             <div className="hidden md:flex items-center space-x-10">

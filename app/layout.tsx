@@ -2,9 +2,12 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio - Full Stack Developer",
+  title: "Fatih Fawwaz",
   description:
-    "Full Stack Developer specializing in web and mobile development with React, Node.js, and React Native.",
+    "Software Engineer specializing in iOS Development, Mobile Solutions, and Full Stack Web Engineering.",
+  icons: {
+    icon: "/web-logo.png",
+  },
 };
 
 export default function RootLayout({
