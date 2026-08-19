@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
@@ -324,10 +323,7 @@ const TECHNOLOGIES = [
 // --- COMPONENTS ---
 
 export default function Portfolio() {
-  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setMounted(true);
-    // Handle hash navigation on mount for smooth scrolling
     if (window.location.hash) {
       const id = window.location.hash.substring(1);
       setTimeout(() => {
@@ -335,11 +331,9 @@ export default function Portfolio() {
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100); // Slight delay to ensure DOM is ready
+      }, 100);
     }
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <div className="font-sf bg-white text-gray-900 antialiased selection:bg-blue-100 selection:text-blue-900">

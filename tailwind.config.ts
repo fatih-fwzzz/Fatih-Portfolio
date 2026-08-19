@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         'sf': ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        'handwriting': ['Gochi Hand', 'cursive'],
+        'handwriting': ['var(--font-gochi-hand)', 'Gochi Hand', 'cursive'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
