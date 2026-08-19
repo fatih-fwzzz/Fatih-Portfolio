@@ -87,7 +87,7 @@ const PERSONAL_INFO = {
     "Passionate about creating seamless user experiences and robust, scalable solutions across mobile and web platforms.",
   avatarUrl:
     "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg",
-  localAvatar: "/pass-foto-1.png",
+  localAvatar: "/pass-foto-1.webp",
   socials: {
     github: "https://github.com/fatih-fwzzz",
     linkedin: "https://www.linkedin.com/in/fatih-daffa-fawwaz-5a28a123b/",
@@ -118,7 +118,7 @@ const PROJECTS = [
       "Apple Intelligence",
     ],
     visualType: "image",
-    image: "/portfolio-lantera.png",
+    image: "/portfolio-lantera.webp",
     appStore: "https://apps.apple.com/id/app/lantera/id6755018594?l=id",
   },
   {
@@ -136,7 +136,7 @@ const PROJECTS = [
       "Supabase",
     ],
     visualType: "image",
-    image: "/portfolio-cococo.png",
+    image: "/portfolio-cococo.webp",
     github: "https://github.com/Regieh/CocoLoco.git",
   },
   {
@@ -147,7 +147,7 @@ const PROJECTS = [
       "2D horizontal-lane tower defense strategic game where players team up with iconic Indonesian folklore heroes to battle alien invaders. It’s not only fun strategy gameplay & winning battles, it’s also introducing Indonesian folklore heroes to the global stage.",
     techStack: ["C#", "Unity 2D"],
     visualType: "image",
-    image: "/portfolio_log.png",
+    image: "/portfolio_log.webp",
     appStore:
       "https://apps.apple.com/id/app/legend-of-gardatara/id6749147194?l=id",
     github: "https://github.com/fatih-fwzzz/LegendOfGardatara.git",
@@ -160,7 +160,7 @@ const PROJECTS = [
       "A taking-care app for gardeners to monitor and maintain the health of their Aloe Vera plants. By taking a picture of the aloe, the app displays health results and highlights diseased areas with segmentation.",
     techStack: ["Swift", "SwiftUI", "SwiftData", "CoreML", "Vision"],
     visualType: "image",
-    image: "/portfolio_leafit.png",
+    image: "/portfolio_leafit.webp",
     github: "https://github.com/LeaFIt-iOS/LeaFitv2.git",
   },
   {
@@ -171,7 +171,7 @@ const PROJECTS = [
       "Indoor navigation app designed to help users find their way to food courts in large building complexes using ARKit and CoreLocation. Works offline in basements/parking areas.",
     techStack: ["Swift", "SwiftUI", "ARKit", "CoreLocation"],
     visualType: "image",
-    image: "/portfolio_looca-2.png",
+    image: "/portfolio_looca-2.webp",
     github: "https://github.com/fatih-fwzzz/Looca.git",
   },
   {
@@ -182,7 +182,7 @@ const PROJECTS = [
       "Streamlined navigation app for Apple Watch. Guides users with a simple arrow and real-time distance updates using CoreLocation. Perfect for short-range indoor navigation.",
     techStack: ["Swift", "SwiftUI", "CoreLocation"],
     visualType: "image",
-    image: "/portfolio_looca-watch-2.png",
+    image: "/portfolio_looca-watch-2.webp",
     github: "https://github.com/fatih-fwzzz/LoocaWatchOS.git",
   },
   {
@@ -193,7 +193,7 @@ const PROJECTS = [
       "An engaging quiz app that celebrates the spirit of Indonesian independence through fun and educational trivia. Built with Flutter and powered by Firebase.",
     techStack: ["Flutter", "Firebase"],
     visualType: "image",
-    image: "/portfolio_hutrivia-2.png",
+    image: "/portfolio_hutrivia-2.webp",
     github: "https://github.com/fatih-fwzzz/HUTRIVIA.git",
   },
   {
@@ -204,7 +204,7 @@ const PROJECTS = [
       "Gamified educational platform for sex education for Indonesian students. Undergraduate thesis project focusing on improving sexual health awareness.",
     techStack: ["Next.js", ".NET Core", "C#", "Azure", "MSSQL"],
     visualType: "image",
-    image: "/portfolio_kenali-diri.png",
+    image: "/portfolio_kenali-diri.webp",
     github: "https://github.com/Kenali-Diri",
   },
   {
@@ -215,7 +215,7 @@ const PROJECTS = [
       "Interactive skincare education platform proven to significantly increase user knowledge. Features ingredient conflict safety checks and mix-and-match simulation.",
     techStack: ["Next.js", "Javascript","Flask", "Python", "MySQL"],
     visualType: "image",
-    image: "/portfolio_pahami-kulit.png",
+    image: "/portfolio_pahami-kulit.webp",
     github: "https://github.com/Basic-Dulu",
   },
 ];
@@ -232,7 +232,7 @@ const EXPERIENCE_DATA = {
       icon: "fa-graduation-cap",
       color: "bg-blue-100 text-blue-600",
       images: [
-        "/about-me/about-me-3.JPG"
+        "/about-me/about-me-3.webp"
       ],
     },
   ],
@@ -246,7 +246,7 @@ const EXPERIENCE_DATA = {
       description:
         "Selected as one of the Apple Developer Academy participants from over 13,000 applicants (with an acceptance rate of less than 1.60%), I am currently engaged in an intensive program that focuses on app development, business, and innovation within the Apple ecosystem. As part of a diverse team, I collaborate to build impactful, user-centric applications using Swift, Xcode, and Apple’s Human Interface Guidelines.",
       images: [
-        "/about-me/about-me-1.jpg"
+        "/about-me/about-me-1.webp"
       ],
       icon: "fa-brands fa-apple",
       color: "bg-gray-100 text-gray-900",
@@ -264,7 +264,7 @@ const EXPERIENCE_DATA = {
         "DevOps: Optimized Jenkins pipelines and integrated performance metrics into Kibana/Elasticsearch dashboards.",
       ],
       images: [
-        "/about-me/about-me-2.jpg"
+        "/about-me/about-me-2.webp"
       ],
       icon: "fa-code",
       color: "bg-purple-100 text-purple-600",
@@ -349,7 +349,7 @@ export default function Portfolio() {
               className="text-xl font-semibold tracking-tight flex items-center group"
             >
               <img
-                src="/web-logo.png"
+                src="/web-logo.webp"
                 alt="Logo"
                 className="w-8 h-8 mr-3 object-contain group-hover:rotate-12 transition-transform"
               />
@@ -631,7 +631,7 @@ export default function Portfolio() {
                 <div className="relative w-full h-[400px] flex items-center justify-center">
                   {[
                     {
-                      src: "/about-me/about-me-4.jpg",
+                      src: "/about-me/about-me-4.webp",
                       label: "",
                       rotate: "-6deg",
                       top: "10%",
@@ -639,7 +639,7 @@ export default function Portfolio() {
                       zIndex: 1,
                     },
                     {
-                      src: "/about-me/about-me-2.jpg",
+                      src: "/about-me/about-me-2.webp",
                       label: "",
                       rotate: "12deg",
                       top: "20%",
@@ -647,7 +647,7 @@ export default function Portfolio() {
                       zIndex: 2,
                     },
                     {
-                      src: "/about-me/about-me-3.JPG",
+                      src: "/about-me/about-me-3.webp",
                       label: "",
                       rotate: "-12deg",
                       bottom: "10%",
@@ -655,7 +655,7 @@ export default function Portfolio() {
                       zIndex: 3,
                     },
                     {
-                      src: "/about-me/about-me-1.jpg",
+                      src: "/about-me/about-me-1.webp",
                       label: "",
                       rotate: "8deg",
                       bottom: "5%",

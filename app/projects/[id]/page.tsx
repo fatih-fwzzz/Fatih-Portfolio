@@ -14,8 +14,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Lead iOS Developer",
     timeline: "3 Months",
     year: "2025",
-    heroImage: "/portfolio-lantera.png",
-    mainImage: "/portfolio-lantera.png",
+    heroImage: "/portfolio-lantera.webp",
+    mainImage: "/portfolio-lantera.webp",
     overview:
       "Lantera was built to solve a real problem faced by families caring for elderly relatives: the difficulty of tracking blood pressure and blood sugar readings consistently. Traditional paper logs are easy to lose, and manual tracking apps require too much typing. We created a voice-first experience that makes logging as simple as speaking.",
     challenge:
@@ -117,22 +117,22 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "SwiftData",
-        logo: "/logo/swiftdata.png",
+        logo: "/logo/swiftdata.webp",
         category: "Persistence",
       },
       {
         name: "CloudKit",
-        logo: "/logo/cloudkit.png",
+        logo: "/logo/cloudkit.webp",
         category: "Cloud Sync",
       },
       {
         name: "SFSpeech",
-        logo: "/logo/sfspeech.png",
+        logo: "/logo/sfspeech.webp",
         category: "Speech Recognition",
       },
       {
         name: "Apple Intelligence",
-        logo: "/logo/apple-intelligence.png",
+        logo: "/logo/apple-intelligence.webp",
         category: "AI/ML",
       },
     ],
@@ -144,11 +144,11 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/lantera/lantera-1.JPG",
-      "/lantera/lantera-2.jpeg",
-      "/lantera/lantera-3.JPEG",
-      "/portfolio-lantera.png",
-      "/portfolio-lantera.png",
+      "/lantera/lantera-1.webp",
+      "/lantera/lantera-2.webp",
+      "/lantera/lantera-3.webp",
+      "/portfolio-lantera.webp",
+      "/portfolio-lantera.webp",
     ],
     nextProject: "cococo",
   },
@@ -160,8 +160,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "iOS Engineer",
     timeline: "3 Weeks",
     year: "2025",
-    heroImage: "/portfolio-cococo.png",
-    mainImage: "/portfolio-cococo.png",
+    heroImage: "/portfolio-cococo.webp",
+    mainImage: "/portfolio-cococo.webp",
     overview:
       "Coco was a working travel app with a loyal user base, but the codebase was built with outdated patterns. The booking flow had a 40% drop-off rate. Our mission was to modernize the architecture while maintaining backward compatibility and dramatically improve the user experience.",
     challenge:
@@ -252,7 +252,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     techStack: [
       {
         name: "UIKit",
-        logo: "/logo/uikit.png",
+        logo: "/logo/uikit.webp",
         category: "UI Framework",
       },
       {
@@ -267,12 +267,12 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "URLSession",
-        logo: "/logo/apple-api.png",
+        logo: "/logo/apple-api.webp",
         category: "Networking",
       },
       {
         name: "XCTest",
-        logo: "/logo/xctest.png",
+        logo: "/logo/xctest.webp",
         category: "Testing",
       },
       {
@@ -298,10 +298,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/cococo/cococo-1.JPG",
-      "/cococo/cococo-2.JPG",
-      "/cococo/cococo-3.JPEG",
-      "/portfolio-cococo.png",
+      "/cococo/cococo-1.webp",
+      "/cococo/cococo-2.webp",
+      "/cococo/cococo-3.webp",
+      "/portfolio-cococo.webp",
     ],
     nextProject: "legend-of-gardatara",
   },
@@ -313,8 +313,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Game Developer",
     timeline: "1 Month",
     year: "2025",
-    heroImage: "/portfolio_log.png",
-    mainImage: "/portfolio_log.png",
+    heroImage: "/portfolio_log.webp",
+    mainImage: "/portfolio_log.webp",
     overview:
       "Legend of Gardatara was born from a passion to showcase Indonesian cultural heritage through gaming. We wanted to create a tower defense game that's not just fun, but also introduces global players to iconic Indonesian folklore characters like Si Kancil, Bawang Merah & Bawang Putih, and Malin Kundang in an exciting sci-fi setting.",
     challenge:
@@ -421,10 +421,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/log/log-1.JPG",
-      "/log/log-2.JPEG",
-      "/log/log-3.JPEG",
-      "/portfolio_log.png",
+      "/log/log-1.webp",
+      "/log/log-2.webp",
+      "/log/log-3.webp",
+      "/portfolio_log.webp",
     ],
     nextProject: "leafit",
   },
@@ -436,8 +436,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Lead Mobile Developer",
     timeline: "3 Months",
     year: "2023",
-    heroImage: "/portfolio_hutrivia-2.png",
-    mainImage: "/portfolio_hutrivia.png",
+    heroImage: "/portfolio_hutrivia-2.webp",
+    mainImage: "/portfolio_hutrivia.webp",
     overview:
       "Hutrivia was born from a desire to make history education accessible and fun. We noticed that traditional learning methods often failed to engage younger audiences, so we set out to create an experience that combines education with the addictive nature of social gaming.",
     challenge:
@@ -534,10 +534,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     ],
     gallery: [
-      "/hutrivia/hutrivia-1.JPEG",
-      "/hutrivia/hutrivia-2.JPEG",
-      "/portfolio_hutrivia.png",
-      "/portfolio_hutrivia.png",
+      "/hutrivia/hutrivia-1.webp",
+      "/hutrivia/hutrivia-2.webp",
+      "/portfolio_hutrivia.webp",
+      "/portfolio_hutrivia.webp",
     ],
     nextProject: "kenali-diri",
   },
@@ -549,8 +549,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "iOS Developer",
     timeline: "4 Months",
     year: "2024",
-    heroImage: "/portfolio_looca-2.png",
-    mainImage: "/portfolio_looca-2.png",
+    heroImage: "/portfolio_looca-2.webp",
+    mainImage: "/portfolio_looca-2.webp",
     overview:
       "GPS fails indoors. LOOCA bridges that gap. We built a solution that uses visual markers and internal sensors to provide pinpoint accuracy inside shopping malls and office complexes, all without needing expensive beacon infrastructure.",
     challenge:
@@ -642,7 +642,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "CoreLocation",
-        logo: "/logo/apple-api.png",
+        logo: "/logo/apple-api.webp",
         category: "Location",
       },
     ],
@@ -659,10 +659,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/looca/looca-1.JPEG",
-      "/looca/looca-2.JPEG",
-      "/looca/looca-3.JPEG",
-      "/portfolio_looca.png",
+      "/looca/looca-1.webp",
+      "/looca/looca-2.webp",
+      "/looca/looca-3.webp",
+      "/portfolio_looca.webp",
     ],
     nextProject: "looca-watch",
   },
@@ -674,8 +674,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Lead iOS Developer",
     timeline: "2 Weeks",
     year: "2025",
-    heroImage: "/portfolio_looca-watch-2.png",
-    mainImage: "/portfolio_looca-watch-2.png",
+    heroImage: "/portfolio_looca-watch-2.webp",
+    mainImage: "/portfolio_looca-watch-2.webp",
     overview:
       "Glancing at a phone while walking can be dangerous. We extended the LOOCA experience to the wrist, providing subtle haptic feedback and simple directional arrows so users can navigate heads-up.",
     challenge:
@@ -767,7 +767,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "CoreLocation",
-        logo: "/logo/apple-api.png",
+        logo: "/logo/apple-api.webp",
         category: "Location",
       },
     ],
@@ -784,10 +784,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/looca-watch/looca-watch-1.png",
-      "/looca-watch/looca-watch-2.JPEG",
-      "/looca-watch/looca-watch-3.png",
-      "/portfolio_looca_watch.png",
+      "/looca-watch/looca-watch-1.webp",
+      "/looca-watch/looca-watch-2.webp",
+      "/looca-watch/looca-watch-3.webp",
+      "/portfolio_looca_watch.webp",
     ],
     nextProject: "hutrivia",
   },
@@ -799,8 +799,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "iOS Engineer",
     timeline: "3 Weeks",
     year: "2025",
-    heroImage: "/portfolio_leafit.png",
-    mainImage: "/portfolio_leafit.png",
+    heroImage: "/portfolio_leafit.webp",
+    mainImage: "/portfolio_leafit.webp",
     overview:
       "Homeplant enthusiasts often struggle to identify why their plants are sick and how to treat them. LeaFit bridges this knowledge gap by using advanced Machine Learning to scan plants, detect specific diseases like Sunburn, Anthracnose, Rust, and Rot, and provide accurate treatment plans, empowering users to understand and care for their plants better.",
     challenge:
@@ -891,7 +891,7 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
       {
         name: "Vision",
-        logo: "/logo/apple-api.png",
+        logo: "/logo/apple-api.webp",
         category: "Image Processing",
       },
       {
@@ -918,10 +918,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/leafit/leafit-1.JPG",
-      "/leafit/leafit-2.png",
-      "/leafit/leafit-3.JPEG",
-      "/portfolio_leafit.png",
+      "/leafit/leafit-1.webp",
+      "/leafit/leafit-2.webp",
+      "/leafit/leafit-3.webp",
+      "/portfolio_leafit.webp",
     ],
     nextProject: "looca",
   },
@@ -933,8 +933,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Full Stack Developer",
     timeline: "6 Months",
     year: "2024",
-    heroImage: "/kenali-diri/kenali-diri-1.JPEG",
-    mainImage: "/portfolio_kenali_diri.png",
+    heroImage: "/kenali-diri/kenali-diri-1.webp",
+    mainImage: "/portfolio_kenali-diri.webp",
     overview:
       "Sexual education in Indonesia is often shrouded in taboo, leading to critical knowledge gaps and rising issues like early pregnancy. 'Kenali-Diri' bridges this gap using Gamification. By transforming serious educational content into interactive levels and roadmaps, we created a safe, non-judgmental space for students to learn effectively.",
     challenge:
@@ -1047,10 +1047,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/kenali-diri/kenali-diri-1.jpg",
-      "/kenali-diri/kenali-diri-2.JPEG",
-      "/kenali-diri/kenali-diri-3.JPEG",
-      "/portfolio_kenali_diri.png",
+      "/kenali-diri/kenali-diri-1-alt.webp",
+      "/kenali-diri/kenali-diri-2.webp",
+      "/kenali-diri/kenali-diri-3.webp",
+      "/portfolio_kenali-diri.webp",
     ],
     nextProject: "pahamikulit",
   },
@@ -1062,8 +1062,8 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
     role: "Full Stack Developer",
     timeline: "6 Months",
     year: "2025",
-    heroImage: "/portfolio_pahami-kulit.png",
-    mainImage: "/portfolio_pahami-kulit.png",
+    heroImage: "/portfolio_pahami-kulit.webp",
+    mainImage: "/portfolio_pahami-kulit.webp",
     overview:
       "Adolescents constantly explore skincare due to puberty and social media influence, but misinformation often leads to damaged skin barriers. PahamiKulit solves this by providing a scientifically-grounded, interactive guide. It helps users identify their skin type and select safe 'basic skincare' routines (Cleanser, Moisturizer, Protector) without the marketing fluff.",
     challenge:
@@ -1176,10 +1176,10 @@ const PROJECT_DETAILS: Record<string, ExtendedProjectData> = {
       },
     },
     gallery: [
-      "/pahami-kulit/pahami-kulit-1.jpg",
-      "/pahami-kulit/pahami-kulit-2.jpg",
-      "/pahami-kulit/pahami-kulit-3.jpg",
-      "/portfolio_pahamikulit.png",
+      "/pahami-kulit/pahami-kulit-1.webp",
+      "/pahami-kulit/pahami-kulit-2.webp",
+      "/pahami-kulit/pahami-kulit-3.webp",
+      "/portfolio_pahamikulit.webp",
     ],
     nextProject: "lantera",
   },

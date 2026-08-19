@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Software Engineer specializing in iOS Development, Mobile Solutions, and Full Stack Web Engineering.",
   icons: {
-    icon: "/web-logo.png",
+    icon: "/web-logo.webp",
   },
 };
 

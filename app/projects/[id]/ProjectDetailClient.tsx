@@ -103,7 +103,7 @@ export default function ProjectDetailClient({
               className="text-xl font-semibold tracking-tight flex items-center group"
             >
               <img
-                src="/web-logo.png"
+                src="/web-logo.webp"
                 alt="Logo"
                 className="w-8 h-8 mr-3 object-contain group-hover:rotate-12 transition-transform"
               />
